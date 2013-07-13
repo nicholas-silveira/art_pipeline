@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html><head><title>QRadialGradient Class Reference</title><style>h3.fn,span.fn { margin-left: 1cm; text-indent: -1cm }
+a:link { color: #004faf; text-decoration: none }
+a:visited { color: #672967; text-decoration: none }
+td.postheader { font-family: sans-serif }
+tr.address { font-family: sans-serif }
+body { background: #ffffff; color: black; }
+</style></head><body><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr /><td align="left" valign="top" width="32"><img align="left" border="0" height="32" src="images/rb-logo.png" width="32" /></td><td width="1">&#160;&#160;</td><td class="postheader" valign="center"><a href="../pyqt4ref.html"><font color="#004faf">Home</font></a>&#160;&#183; <a href="classes.html"><font color="#004faf">All Classes</font></a>&#160;&#183; <a href="modules.html"><font color="#004faf">Modules</font></a></td></table><h1 align="center">QRadialGradient Class Reference<br /><sup><sup>[<a href="qtgui.html">QtGui</a> module]</sup></sup></h1><p>The QRadialGradient class is used in combination with <a href="qbrush.html">QBrush</a> to specify a radial gradient brush.
+<a href="#details">More...</a></p>
+
+<p>Inherits <a href="qgradient.html">QGradient</a>.</p><h3>Methods</h3><ul><li><div class="fn" /><b><a href="qradialgradient.html#QRadialGradient">__init__</a></b> (<i>self</i>)</li><li><div class="fn" /><b><a href="qradialgradient.html#QRadialGradient-2">__init__</a></b> (<i>self</i>, QPointF&#160;<i>center</i>, float&#160;<i>radius</i>, QPointF&#160;<i>focalPoint</i>)</li><li><div class="fn" /><b><a href="qradialgradient.html#QRadialGradient-3">__init__</a></b> (<i>self</i>, QPointF&#160;<i>center</i>, float&#160;<i>radius</i>)</li><li><div class="fn" /><b><a href="qradialgradient.html#QRadialGradient-4">__init__</a></b> (<i>self</i>, float&#160;<i>cx</i>, float&#160;<i>cy</i>, float&#160;<i>radius</i>, float&#160;<i>fx</i>, float&#160;<i>fy</i>)</li><li><div class="fn" /><b><a href="qradialgradient.html#QRadialGradient-5">__init__</a></b> (<i>self</i>, float&#160;<i>cx</i>, float&#160;<i>cy</i>, float&#160;<i>radius</i>)</li><li><div class="fn" /><b><a href="qradialgradient.html#QRadialGradient-6">__init__</a></b> (<i>self</i>, QRadialGradient)</li><li><div class="fn" />QPointF <b><a href="qradialgradient.html#center">center</a></b> (<i>self</i>)</li><li><div class="fn" />QPointF <b><a href="qradialgradient.html#focalPoint">focalPoint</a></b> (<i>self</i>)</li><li><div class="fn" />float <b><a href="qradialgradient.html#radius">radius</a></b> (<i>self</i>)</li><li><div class="fn" /><b><a href="qradialgradient.html#setCenter">setCenter</a></b> (<i>self</i>, QPointF&#160;<i>center</i>)</li><li><div class="fn" /><b><a href="qradialgradient.html#setCenter-2">setCenter</a></b> (<i>self</i>, float&#160;<i>x</i>, float&#160;<i>y</i>)</li><li><div class="fn" /><b><a href="qradialgradient.html#setFocalPoint">setFocalPoint</a></b> (<i>self</i>, QPointF&#160;<i>focalPoint</i>)</li><li><div class="fn" /><b><a href="qradialgradient.html#setFocalPoint-2">setFocalPoint</a></b> (<i>self</i>, float&#160;<i>x</i>, float&#160;<i>y</i>)</li><li><div class="fn" /><b><a href="qradialgradient.html#setRadius">setRadius</a></b> (<i>self</i>, float&#160;<i>radius</i>)</li></ul><a name="details" /><hr /><h2>Detailed Description</h2><p>The QRadialGradient class is used in combination with <a href="qbrush.html">QBrush</a> to specify a radial gradient brush.</p>
+<p>Radial gradients interpolate colors between a focal point and
+end points on a circle surrounding it. Outside the end points the
+gradient is either padded, reflected or repeated depending on the
+currently set <a href="qgradient.html#Spread-enum">spread</a>
+method:</p>
+<table class="generic">
+<tr class="odd topAlign">
+<td>
+<p><img src="images/qradialgradient-pad.png" /></p>
+</td>
+<td>
+<p><img src="images/qradialgradient-reflect.png" /></p>
+</td>
+<td>
+<p><img src="images/qradialgradient-repeat.png" /></p>
+</td>
+</tr>
+<tr class="even topAlign">
+<td>
+<p><a href="qgradient.html#Spread-enum">PadSpread</a> (default)</p>
+</td>
+<td>
+<p><a href="qgradient.html#Spread-enum">ReflectSpread</a></p>
+</td>
+<td>
+<p><a href="qgradient.html#Spread-enum">RepeatSpread</a></p>
+</td>
+</tr>
+</table>
+<p>The colors in a gradient is defined using stop points of the
+<a href="qgradient.html#QGradientStop-typedef">QGradientStop</a>
+type, i.e. a position and a color. Use the <a href="qgradient.html#setColorAt">QGradient.setColorAt</a>() or the
+<a href="qgradient.html#setStops">QGradient.setStops</a>()
+function to define the stop points. It is the gradient's complete
+set of stop points that describes how the gradient area should be
+filled. If no stop points have been specified, a gradient of black
+at 0 to white at 1 is used.</p>
+<p>In addition to the functions inherited from <a href="qgradient.html">QGradient</a>, the QRadialGradient class provides
+the <a href="qradialgradient.html#center">center</a>(), <a href="qradialgradient.html#focalPoint">focalPoint</a>() and <a href="qradialgradient.html#radius">radius</a>() functions returning the
+gradient's center, focal point and radius respectively.</p>
+<hr /><h2>Method Documentation</h2><h3 class="fn"><a name="QRadialGradient" />QRadialGradient.__init__ (<i>self</i>)</h3><p>Constructs a radial gradient with the center and focal point at
+(0, 0) with a radius of 1.</p>
+
+
+<h3 class="fn"><a name="QRadialGradient-2" />QRadialGradient.__init__ (<i>self</i>, <a href="qpointf.html">QPointF</a>&#160;<i>center</i>, float&#160;<i>radius</i>, <a href="qpointf.html">QPointF</a>&#160;<i>focalPoint</i>)</h3><p>Constructs a radial gradient with the given <i>center</i>,
+<i>radius</i> and <i>focalPoint</i>.</p>
+<p>See also <a href="qgradient.html#setColorAt">QGradient.setColorAt</a>() and
+<a href="qgradient.html#setStops">QGradient.setStops</a>().</p>
+
+
+<h3 class="fn"><a name="QRadialGradient-3" />QRadialGradient.__init__ (<i>self</i>, <a href="qpointf.html">QPointF</a>&#160;<i>center</i>, float&#160;<i>radius</i>)</h3><p>Constructs a radial gradient with the given center (<i>cx</i>,
+<i>cy</i>), <i>radius</i> and focal point (<i>fx</i>,
+<i>fy</i>).</p>
+<p>See also <a href="qgradient.html#setColorAt">QGradient.setColorAt</a>() and
+<a href="qgradient.html#setStops">QGradient.setStops</a>().</p>
+
+
+<h3 class="fn"><a name="QRadialGradient-4" />QRadialGradient.__init__ (<i>self</i>, float&#160;<i>cx</i>, float&#160;<i>cy</i>, float&#160;<i>radius</i>, float&#160;<i>fx</i>, float&#160;<i>fy</i>)</h3><p>Constructs a radial gradient with the given <i>center</i>,
+<i>radius</i> and the focal point in the circle center.</p>
+<p>See also <a href="qgradient.html#setColorAt">QGradient.setColorAt</a>() and
+<a href="qgradient.html#setStops">QGradient.setStops</a>().</p>
+
+
+<h3 class="fn"><a name="QRadialGradient-5" />QRadialGradient.__init__ (<i>self</i>, float&#160;<i>cx</i>, float&#160;<i>cy</i>, float&#160;<i>radius</i>)</h3><p>Constructs a radial gradient with the center at (<i>cx</i>,
+<i>cy</i>) and the specified <i>radius</i>. The focal point lies at
+the center of the circle.</p>
+<p>See also <a href="qgradient.html#setColorAt">QGradient.setColorAt</a>() and
+<a href="qgradient.html#setStops">QGradient.setStops</a>().</p>
+
+
+<h3 class="fn"><a name="QRadialGradient-6" />QRadialGradient.__init__ (<i>self</i>, <a href="qradialgradient.html">QRadialGradient</a>)</h3><h3 class="fn"><a name="center" /><a href="qpointf.html">QPointF</a> QRadialGradient.center (<i>self</i>)</h3><p>Returns the center of this radial gradient in logical
+coordinates.</p>
+<p>See also <a href="qradialgradient.html#setCenter">setCenter</a>() and <a href="qgradient.html#stops">QGradient.stops</a>().</p>
+
+
+<h3 class="fn"><a name="focalPoint" /><a href="qpointf.html">QPointF</a> QRadialGradient.focalPoint (<i>self</i>)</h3><p>Returns the focal point of this radial gradient in logical
+coordinates.</p>
+<p>See also <a href="qradialgradient.html#setFocalPoint">setFocalPoint</a>() and
+<a href="qgradient.html#stops">QGradient.stops</a>().</p>
+
+
+<h3 class="fn"><a name="radius" />float QRadialGradient.radius (<i>self</i>)</h3><p>Returns the radius of this radial gradient in logical
+coordinates.</p>
+<p>See also <a href="qradialgradient.html#setRadius">setRadius</a>() and <a href="qgradient.html#stops">QGradient.stops</a>().</p>
+
+
+<h3 class="fn"><a name="setCenter" />QRadialGradient.setCenter (<i>self</i>, <a href="qpointf.html">QPointF</a>&#160;<i>center</i>)</h3><p>Sets the center of this radial gradient in logical coordinates
+to <i>center</i>.</p>
+<p>This function was introduced in Qt 4.2.</p>
+<p>See also <a href="qradialgradient.html#center">center</a>().</p>
+
+
+<h3 class="fn"><a name="setCenter-2" />QRadialGradient.setCenter (<i>self</i>, float&#160;<i>x</i>, float&#160;<i>y</i>)</h3><p>This is an overloaded function.</p>
+<p>Sets the center of this radial gradient in logical coordinates
+to (<i>x</i>, <i>y</i>).</p>
+<p>This function was introduced in Qt 4.2.</p>
+<p>See also <a href="qradialgradient.html#center">center</a>().</p>
+
+
+<h3 class="fn"><a name="setFocalPoint" />QRadialGradient.setFocalPoint (<i>self</i>, <a href="qpointf.html">QPointF</a>&#160;<i>focalPoint</i>)</h3><p>Sets the focal point of this radial gradient in logical
+coordinates to <i>focalPoint</i>.</p>
+<p>This function was introduced in Qt 4.2.</p>
+<p>See also <a href="qradialgradient.html#focalPoint">focalPoint</a>().</p>
+
+
+<h3 class="fn"><a name="setFocalPoint-2" />QRadialGradient.setFocalPoint (<i>self</i>, float&#160;<i>x</i>, float&#160;<i>y</i>)</h3><p>This is an overloaded function.</p>
+<p>Sets the focal point of this radial gradient in logical
+coordinates to (<i>x</i>, <i>y</i>).</p>
+<p>This function was introduced in Qt 4.2.</p>
+<p>See also <a href="qradialgradient.html#focalPoint">focalPoint</a>().</p>
+
+
+<h3 class="fn"><a name="setRadius" />QRadialGradient.setRadius (<i>self</i>, float&#160;<i>radius</i>)</h3><p>Sets the radius of this radial gradient in logical coordinates
+to <i>radius</i></p>
+<p>This function was introduced in Qt 4.2.</p>
+<p>See also <a href="qradialgradient.html#radius">radius</a>().</p>
+<address><hr /><div align="center"><table border="0" cellspacing="0" width="100%"><tr class="address"><td align="left" width="25%">PyQt&#160;4.8.3 for Windows</td><td align="center" width="50%">Copyright &#169; <a href="http://www.riverbankcomputing.com">Riverbank&#160;Computing&#160;Ltd</a> and <a href="http://www.qtsoftware.com">Nokia</a> 2011</td><td align="right" width="25%">Qt&#160;4.7.1</td></tr></table></div></address></body></html>

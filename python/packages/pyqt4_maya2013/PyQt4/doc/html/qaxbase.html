@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html><head><title>QAxBase Class Reference</title><style>h3.fn,span.fn { margin-left: 1cm; text-indent: -1cm }
+a:link { color: #004faf; text-decoration: none }
+a:visited { color: #672967; text-decoration: none }
+td.postheader { font-family: sans-serif }
+tr.address { font-family: sans-serif }
+body { background: #ffffff; color: black; }
+</style></head><body><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr /><td align="left" valign="top" width="32"><img align="left" border="0" height="32" src="images/rb-logo.png" width="32" /></td><td width="1">&#160;&#160;</td><td class="postheader" valign="center"><a href="../pyqt4ref.html"><font color="#004faf">Home</font></a>&#160;&#183; <a href="classes.html"><font color="#004faf">All Classes</font></a>&#160;&#183; <a href="modules.html"><font color="#004faf">Modules</font></a></td></table><h1 align="center">QAxBase Class Reference<br /><sup><sup>[<a href="qaxcontainer.html">QAxContainer</a> module]</sup></sup></h1><p>The QAxBase class is an abstract class that provides an API to
+initialize and access a COM object. <a href="#details">More...</a></p>
+
+<p>Inherited by <a href="qaxobject.html">QAxObject</a> and <a href="qaxwidget.html">QAxWidget</a>.</p><h3>Methods</h3><ul><li><div class="fn" /><b><a href="qaxbase.html#QAxBase">__init__</a></b> (<i>self</i>)</li><li><div class="fn" /><b><a href="qaxbase.html#QAxBase-2">__init__</a></b> (<i>self</i>, QAxBase)</li><li><div class="fn" />QVariant <b><a href="qaxbase.html#asVariant">asVariant</a></b> (<i>self</i>)</li><li><div class="fn" /><b><a href="qaxbase.html#clear">clear</a></b> (<i>self</i>)</li><li><div class="fn" />QString <b><a href="qaxbase.html#control">control</a></b> (<i>self</i>)</li><li><div class="fn" /><b><a href="qaxbase.html#disableClassInfo">disableClassInfo</a></b> (<i>self</i>)</li><li><div class="fn" /><b><a href="qaxbase.html#disableEventSink">disableEventSink</a></b> (<i>self</i>)</li><li><div class="fn" /><b><a href="qaxbase.html#disableMetaObject">disableMetaObject</a></b> (<i>self</i>)</li><li><div class="fn" />QVariant <b><a href="qaxbase.html#dynamicCall">dynamicCall</a></b> (<i>self</i>, str, QVariant&#160;<i>value1</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value2</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value3</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value4</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value5</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value6</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value7</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value8</i>&#160;=&#160;QVariant())</li><li><div class="fn" />QVariant <b><a href="qaxbase.html#dynamicCall-2">dynamicCall</a></b> (<i>self</i>, str, list-of-QVariant)</li><li><div class="fn" />QString <b><a href="qaxbase.html#generateDocumentation">generateDocumentation</a></b> (<i>self</i>)</li><li><div class="fn" />bool <b><a href="qaxbase.html#isNull">isNull</a></b> (<i>self</i>)</li><li><div class="fn" />dict-of-QString-QVariant <b><a href="qaxbase.html#propertyBag">propertyBag</a></b> (<i>self</i>)</li><li><div class="fn" />bool <b><a href="qaxbase.html#propertyWritable">propertyWritable</a></b> (<i>self</i>, str)</li><li><div class="fn" />QAxObject <b><a href="qaxbase.html#querySubObject">querySubObject</a></b> (<i>self</i>, str, QVariant&#160;<i>value1</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value2</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value3</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value4</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value5</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value6</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value7</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value8</i>&#160;=&#160;QVariant())</li><li><div class="fn" />QAxObject <b><a href="qaxbase.html#querySubObject-2">querySubObject</a></b> (<i>self</i>, str, list-of-QVariant)</li><li><div class="fn" />bool <b><a href="qaxbase.html#setControl">setControl</a></b> (<i>self</i>, QString)</li><li><div class="fn" /><b><a href="qaxbase.html#setPropertyBag">setPropertyBag</a></b> (<i>self</i>, dict-of-QString-QVariant)</li><li><div class="fn" /><b><a href="qaxbase.html#setPropertyWritable">setPropertyWritable</a></b> (<i>self</i>, str, bool)</li><li><div class="fn" />QStringList <b><a href="qaxbase.html#verbs">verbs</a></b> (<i>self</i>)</li></ul><h3>Qt Signals</h3><ul><li><div class="fn" />void <b><a href="qaxbase.html#exception">exception</a></b> (int,const QString&amp;,const QString&amp;,const QString&amp;)</li><li><div class="fn" />void <b><a href="qaxbase.html#propertyChanged">propertyChanged</a></b> (const QString&amp;)</li><li><div class="fn" />void <b><a href="qaxbase.html#signal">signal</a></b> (const QString&amp;,int,void *)</li></ul><a name="details" /><hr /><h2>Detailed Description</h2><p>The QAxBase class is an abstract class that provides an API to
+initialize and access a COM object.</p>
+<p>QAxBase is an abstract class that cannot be used directly, and
+is instantiated through the subclasses <a href="qaxobject.html">QAxObject</a> and <a href="qaxwidget.html">QAxWidget</a>. This class provides the API to
+access the COM object directly through its IUnknown implementation.
+If the COM object implements the IDispatch interface, the
+properties and methods of that object become available as Qt
+properties and slots.</p>
+<pre class="highlightedCode brush: cpp">
+ connect(buttonBack, SIGNAL(clicked()), webBrowser, SLOT(GoBack()));
+</pre>
+<p>Properties exposed by the object's IDispatch implementation can
+be read and written through the property system provided by the Qt
+Object Model (both subclasses are <a href="qtwebkit-bridge.html#qobjects">QObjects</a>, so you can use
+<a href="qobject.html#setProperty">QObject.setProperty</a>() and
+<a href="qobject.html#property">QObject.property</a>()).
+Properties with multiple parameters are not supported.</p>
+<pre class="highlightedCode brush: cpp">
+ activeX-&gt;setProperty("text", "some text");
+ int value = activeX-&gt;property("value");
+</pre>
+<p>Write-functions for properties and other methods exposed by the
+object's IDispatch implementation can be called directly using
+<a href="qaxbase.html#dynamicCall">dynamicCall</a>(), or indirectly
+as slots connected to a signal.</p>
+<pre class="highlightedCode brush: cpp">
+ webBrowser-&gt;dynamicCall("GoHome()");
+</pre>
+<p>Outgoing events supported by the COM object are emitted as
+standard Qt signals.</p>
+<pre class="highlightedCode brush: cpp">
+ connect(webBrowser, SIGNAL(TitleChanged(QString)),
+         this, SLOT(setCaption(QString)));
+</pre>
+<p>QAxBase transparently converts between COM data types and the
+equivalent Qt data types. Some COM types have no equivalent Qt data
+structure.</p>
+<p>Supported COM datatypes are listed in the first column of
+following table. The second column is the Qt type that can be used
+with the <a href="qobject.html">QObject</a> property functions. The
+third column is the Qt type that is used in the prototype of
+generated signals and slots for in-parameters, and the last column
+is the Qt type that is used in the prototype of signals and slots
+for out-parameters.</p>
+<table class="generic">
+<thead>
+<tr class="qt-style topAlign">
+<th>COM type</th>
+<th>Qt property</th>
+<th>in-parameter</th>
+<th>out-parameter</th>
+</tr>
+</thead>
+<tr class="odd topAlign">
+<td>
+<p>VARIANT_BOOL</p>
+</td>
+<td>
+<p>bool</p>
+</td>
+<td>
+<p>bool</p>
+</td>
+<td>
+<p>bool&amp;</p>
+</td>
+</tr>
+<tr class="even topAlign">
+<td>
+<p>BSTR</p>
+</td>
+<td>
+<p><a href="qstring.html">QString</a></p>
+</td>
+<td>
+<p>const <a href="qstring.html">QString</a>&amp;</p>
+</td>
+<td>
+<p><a href="qstring.html">QString</a>&amp;</p>
+</td>
+</tr>
+<tr class="odd topAlign">
+<td>
+<p>char, short, int, long</p>
+</td>
+<td>
+<p>int</p>
+</td>
+<td>
+<p>int</p>
+</td>
+<td>
+<p>int&amp;</p>
+</td>
+</tr>
+<tr class="even topAlign">
+<td>
+<p>uchar, ushort, uint, ulong</p>
+</td>
+<td>
+<p>uint</p>
+</td>
+<td>
+<p>uint</p>
+</td>
+<td>
+<p>uint&amp;</p>
+</td>
+</tr>
+<tr class="odd topAlign">
+<td>
+<p>float, double</p>
+</td>
+<td>
+<p>double</p>
+</td>
+<td>
+<p>double</p>
+</td>
+<td>
+<p>double&amp;</p>
+</td>
+</tr>
+<tr class="even topAlign">
+<td>
+<p>DATE</p>
+</td>
+<td>
+<p><a href="qdatetime.html">QDateTime</a></p>
+</td>
+<td>
+<p>const <a href="qdatetime.html">QDateTime</a>&amp;</p>
+</td>
+<td>
+<p><a href="qdatetime.html">QDateTime</a>&amp;</p>
+</td>
+</tr>
+<tr class="odd topAlign">
+<td>
+<p>CY</p>
+</td>
+<td>
+<p>qlonglong</p>
+</td>
+<td>
+<p>qlonglong</p>
+</td>
+<td>
+<p>qlonglong&amp;</p>
+</td>
+</tr>
+<tr class="even topAlign">
+<td>
+<p>OLE_COLOR</p>
+</td>
+<td>
+<p><a href="qcolor.html">QColor</a></p>
+</td>
+<td>
+<p>const <a href="qcolor.html">QColor</a>&amp;</p>
+</td>
+<td>
+<p><a href="qcolor.html">QColor</a>&amp;</p>
+</td>
+</tr>
+<tr class="odd topAlign">
+<td>
+<p>SAFEARRAY(VARIANT)</p>
+</td>
+<td>
+<p><a href="qlist.html">QList</a>&lt;<a href="qvariant.html">QVariant</a>&gt;</p>
+</td>
+<td>
+<p>const <a href="qlist.html">QList</a>&lt;<a href="qvariant.html">QVariant</a>&gt;&amp;</p>
+</td>
+<td>
+<p><a href="qlist.html">QList</a>&lt;<a href="qvariant.html">QVariant</a>&gt;&amp;</p>
+</td>
+</tr>
+<tr class="even topAlign">
+<td>
+<p>SAFEARRAY(int), SAFEARRAY(double), SAFEARRAY(Date)</p>
+</td>
+<td>
+<p><a href="qlist.html">QList</a>&lt;<a href="qvariant.html">QVariant</a>&gt;</p>
+</td>
+<td>
+<p>const <a href="qlist.html">QList</a>&lt;<a href="qvariant.html">QVariant</a>&gt;&amp;</p>
+</td>
+<td>
+<p><a href="qlist.html">QList</a>&lt;<a href="qvariant.html">QVariant</a>&gt;&amp;</p>
+</td>
+</tr>
+<tr class="odd topAlign">
+<td>
+<p>SAFEARRAY(BYTE)</p>
+</td>
+<td>
+<p><a href="qbytearray.html">QByteArray</a></p>
+</td>
+<td>
+<p>const <a href="qbytearray.html">QByteArray</a>&amp;</p>
+</td>
+<td>
+<p><a href="qbytearray.html">QByteArray</a>&amp;</p>
+</td>
+</tr>
+<tr class="even topAlign">
+<td>
+<p>SAFEARRAY(BSTR)</p>
+</td>
+<td>
+<p><a href="qstringlist.html">QStringList</a></p>
+</td>
+<td>
+<p>const <a href="qstringlist.html">QStringList</a>&amp;</p>
+</td>
+<td>
+<p><a href="qstringlist.html">QStringList</a>&amp;</p>
+</td>
+</tr>
+<tr class="odd topAlign">
+<td>
+<p>VARIANT</p>
+</td>
+<td>
+<p>type-dependent</p>
+</td>
+<td>
+<p>const <a href="qvariant.html">QVariant</a>&amp;</p>
+</td>
+<td>
+<p><a href="qvariant.html">QVariant</a>&amp;</p>
+</td>
+</tr>
+<tr class="even topAlign">
+<td>
+<p>IFontDisp*</p>
+</td>
+<td>
+<p><a href="qfont.html">QFont</a></p>
+</td>
+<td>
+<p>const <a href="qfont.html">QFont</a>&amp;</p>
+</td>
+<td>
+<p><a href="qfont.html">QFont</a>&amp;</p>
+</td>
+</tr>
+<tr class="odd topAlign">
+<td>
+<p>IPictureDisp*</p>
+</td>
+<td>
+<p><a href="qpixmap.html">QPixmap</a></p>
+</td>
+<td>
+<p>const <a href="qpixmap.html">QPixmap</a>&amp;</p>
+</td>
+<td>
+<p><a href="qpixmap.html">QPixmap</a>&amp;</p>
+</td>
+</tr>
+<tr class="even topAlign">
+<td>
+<p>IDispatch*</p>
+</td>
+<td>
+<p><a href="qaxobject.html">QAxObject</a>*</p>
+</td>
+<td>
+<p><tt>QAxBase.asVariant()</tt></p>
+</td>
+<td>
+<p><a href="qaxobject.html">QAxObject</a>* (return value)</p>
+</td>
+</tr>
+<tr class="odd topAlign">
+<td>
+<p>IUnknown*</p>
+</td>
+<td>
+<p><a href="qaxobject.html">QAxObject</a>*</p>
+</td>
+<td>
+<p><tt>QAxBase.asVariant()</tt></p>
+</td>
+<td>
+<p><a href="qaxobject.html">QAxObject</a>* (return value)</p>
+</td>
+</tr>
+<tr class="even topAlign">
+<td>
+<p>SCODE, DECIMAL</p>
+</td>
+<td>
+<p><i>unsupported</i></p>
+</td>
+<td>
+<p><i>unsupported</i></p>
+</td>
+<td>
+<p><i>unsupported</i></p>
+</td>
+</tr>
+<tr class="odd topAlign">
+<td>
+<p>VARIANT* (Since Qt 4.5)</p>
+</td>
+<td>
+<p><i>unsupported</i></p>
+</td>
+<td>
+<p><i>QVariant&amp;</i></p>
+</td>
+<td>
+<p><i>QVariant&amp;</i></p>
+</td>
+</tr>
+</table>
+<p>Supported are also enumerations, and typedefs to supported
+types.</p>
+<p>To call the methods of a COM interface described by the
+following IDL</p>
+<pre class="highlightedCode brush: cpp">
+ dispinterface IControl
+ {
+ properties:
+     [id(1)] BSTR text;
+     [id(2)] IFontDisp *font;
+
+ methods:
+     [id(6)] void showColumn([in] int i);
+     [id(3)] bool addColumn([in] BSTR t);
+     [id(4)] int fillList([in, out] SAFEARRAY(VARIANT) *list);
+     [id(5)] IDispatch *item([in] int i);
+ };
+</pre>
+<p>use the QAxBase API like this:</p>
+<pre class="highlightedCode brush: cpp">
+ QAxObject object("&lt;CLSID&gt;");
+
+ QString text = object.property("text").toString();
+ object.setProperty("font", QFont("Times New Roman", 12));
+
+ connect(this, SIGNAL(clicked(int)), &amp;object, SLOT(showColumn(int)));
+ bool ok = object.dynamicCall("addColumn(const QString&amp;)", "Column 1").toBool();
+
+ QList&lt;QVariant&gt; varlist;
+ QList&lt;QVariant&gt; parameters;
+ parameters &lt;&lt; QVariant(varlist);
+ int n = object.dynamicCall("fillList(QList&lt;QVariant&gt;&amp;)", parameters).toInt();
+
+ QAxObject *item = object.querySubItem("item(int)", 5);
+</pre>
+<p>Note that the <a href="qlist.html">QList</a> the object should
+fill has to be provided as an element in the parameter list of
+<a href="qvariant.html">QVariant</a>s.</p>
+<p>If you need to access properties or pass parameters of
+unsupported datatypes you must access the COM object directly
+through its <tt>IDispatch</tt> implementation or other interfaces.
+Those interfaces can be retrieved through <a href="qaxbase.html#queryInterface">queryInterface</a>().</p>
+<pre class="highlightedCode brush: cpp">
+ IUnknown *iface = 0;
+ activeX-&gt;queryInterface(IID_IUnknown, (void**)&amp;iface);
+ if (iface) {
+     <span class="comment">// use the interface</span>
+     iface-&gt;Release();
+ }
+</pre>
+<p>To get the definition of the COM interfaces you will have to use
+the header files provided with the component you want to use. Some
+compilers can also import type libraries using the #import compiler
+directive. See the component documentation to find out which type
+libraries you have to import, and how to use them.</p>
+<p>If you need to react to events that pass parameters of
+unsupported datatypes you can use the generic signal that delivers
+the event data as provided by the COM event.</p>
+<hr /><h2>Method Documentation</h2><h3 class="fn"><a name="QAxBase" />QAxBase.__init__ (<i>self</i>)</h3><p>Creates a <a href="qaxbase.html">QAxBase</a> object that wraps
+the COM object <i>iface</i>. If <i>iface</i> is 0 (the default),
+use <a href="qaxbase.html#control-prop">setControl</a>() to
+instantiate a COM object.</p>
+
+
+<h3 class="fn"><a name="QAxBase-2" />QAxBase.__init__ (<i>self</i>, <a href="qaxbase.html">QAxBase</a>)</h3><h3 class="fn"><a name="asVariant" />QVariant QAxBase.asVariant (<i>self</i>)</h3><p>Returns a <a href="qvariant.html">QVariant</a> that wraps the
+COM object. The variant can then be used as a parameter in e.g.
+<a href="qaxbase.html#dynamicCall">dynamicCall</a>().</p>
+
+
+<h3 class="fn"><a name="clear" />QAxBase.clear (<i>self</i>)</h3><p>Disconnects and destroys the COM object.</p>
+<p>If you reimplement this function you must also reimplement the
+destructor to call clear(), and call this implementation at the end
+of your clear() function.</p>
+
+
+<h3 class="fn"><a name="control" />QString QAxBase.control (<i>self</i>)</h3><h3 class="fn"><a name="disableClassInfo" />QAxBase.disableClassInfo (<i>self</i>)</h3><p>Disables the class info generation for this ActiveX container.
+If you don't require any class information about the ActiveX
+control use this function to speed up the meta object
+generation.</p>
+<p>Note that this function must be called immediately after
+construction of the object</p>
+
+
+<h3 class="fn"><a name="disableEventSink" />QAxBase.disableEventSink (<i>self</i>)</h3><p>Disables the event sink implementation for this ActiveX
+container. If you don't intend to listen to the ActiveX control's
+events use this function to speed up the meta object
+generation.</p>
+<p>Some ActiveX controls might be unstable when connected to an
+event sink. To get OLE events you must use standard COM methods to
+register your own event sink. Use <a href="qaxbase.html#queryInterface">queryInterface</a>() to get access to
+the raw COM object.</p>
+<p>Note that this function should be called immediately after
+construction of the object.</p>
+
+
+<h3 class="fn"><a name="disableMetaObject" />QAxBase.disableMetaObject (<i>self</i>)</h3><p>Disables the meta object generation for this ActiveX container.
+This also disables the event sink and class info generation. If you
+don't intend to use the Qt meta object implementation call this
+function to speed up instantiation of the control. You will still
+be able to call the object through <a href="qaxbase.html#dynamicCall">dynamicCall</a>(), but signals, slots
+and properties will not be available with <a href="qobject.html">QObject</a> APIs.</p>
+<p>Some ActiveX controls might be unstable when used with OLE
+automation. Use standard COM methods to use those controls through
+the COM interfaces provided by <a href="qaxbase.html#queryInterface">queryInterface</a>().</p>
+<p>Note that this function must be called immediately after
+construction of the object.</p>
+
+
+<h3 class="fn"><a name="dynamicCall" />QVariant QAxBase.dynamicCall (<i>self</i>, str, QVariant&#160;<i>value1</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value2</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value3</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value4</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value5</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value6</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value7</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value8</i>&#160;=&#160;QVariant())</h3><p>Calls the COM object's method <i>function</i>, passing the
+parameters <i>var1</i>, <i>var1</i>, <i>var2</i>, <i>var3</i>,
+<i>var4</i>, <i>var5</i>, <i>var6</i>, <i>var7</i> and <i>var8</i>,
+and returns the value returned by the method, or an invalid
+<a href="qvariant.html">QVariant</a> if the method does not return
+a value or when the function call failed.</p>
+<p>If <i>function</i> is a method of the object the string must be
+provided as the full prototype, for example as it would be written
+in a <a href="qobject.html#connect">QObject.connect</a>()
+call.</p>
+<pre class="highlightedCode brush: cpp">
+ activeX-&gt;dynamicCall("Navigate(const QString&amp;)", "qt.nokia.com");
+</pre>
+<p>Alternatively a function can be called passing the parameters
+embedded in the string, e.g. above function can also be invoked
+using</p>
+<pre class="highlightedCode brush: cpp">
+ activeX-&gt;dynamicCall("Navigate(\"qt.nokia.com\")");
+</pre>
+<p>All parameters are passed as strings; it depends on the control
+whether they are interpreted correctly, and is slower than using
+the prototype with correctly typed parameters.</p>
+<p>If <i>function</i> is a property the string has to be the name
+of the property. The property setter is called when <i>var1</i> is
+a valid <a href="qvariant.html">QVariant</a>, otherwise the getter
+is called.</p>
+<pre class="highlightedCode brush: cpp">
+ activeX-&gt;dynamicCall("Value", 5);
+ QString text = activeX-&gt;dynamicCall("Text").toString();
+</pre>
+<p>Note that it is faster to get and set properties using <a href="qobject.html#property">QObject.property</a>() and <a href="qobject.html#setProperty">QObject.setProperty</a>().</p>
+<p>dynamicCall() can also be used to call objects with a <a href="qaxbase.html#disableMetaObject">disabled metaobject</a> wrapper,
+which can improve performance significantely, esp. when calling
+many different objects of different types during an automation
+process. <a href="activeqt.html#activeqt">ActiveQt</a> will then
+however not validate parameters.</p>
+<p>It is only possible to call functions through dynamicCall() that
+have parameters or return values of datatypes supported by <a href="qvariant.html">QVariant</a>. See the <a href="qaxbase.html">QAxBase</a> class documentation for a list of
+supported and unsupported datatypes. If you want to call functions
+that have unsupported datatypes in the parameter list, use <a href="qaxbase.html#queryInterface">queryInterface</a>() to retrieve the
+appropriate COM interface, and use the function directly.</p>
+<pre class="highlightedCode brush: cpp">
+ IWebBrowser2 *webBrowser = 0;
+ activeX-&gt;queryInterface(IID_IWebBrowser2, (void **)&amp;webBrowser);
+ if (webBrowser) {
+     webBrowser-&gt;Navigate2(pvarURL);
+     webBrowser-&gt;Release();
+ }
+</pre>
+<p>This is also more efficient.</p>
+
+
+<h3 class="fn"><a name="dynamicCall-2" />QVariant QAxBase.dynamicCall (<i>self</i>, str, list-of-QVariant)</h3><p>This is an overloaded function.</p>
+<p>Calls the COM object's method <i>function</i>, passing the
+parameters in <i>vars</i>, and returns the value returned by the
+method. If the method does not return a value or when the function
+call failed this function returns an invalid <a href="qvariant.html">QVariant</a> object.</p>
+<p>The <a href="qvariant.html">QVariant</a> objects in <i>vars</i>
+are updated when the method has out-parameters.</p>
+
+
+<h3 class="fn"><a name="generateDocumentation" />QString QAxBase.generateDocumentation (<i>self</i>)</h3><p>Returns a rich text string with documentation for the wrapped
+COM object. Dump the string to an HTML-file, or use it in e.g. a
+<a href="qtextbrowser.html">QTextBrowser</a> widget.</p>
+
+
+<h3 class="fn"><a name="isNull" />bool QAxBase.isNull (<i>self</i>)</h3><p>Returns true if there is no COM object loaded by this wrapper;
+otherwise return false.</p>
+<p>See also <a href="qaxbase.html#control-prop">control</a>.</p>
+
+
+<h3 class="fn"><a name="propertyBag" />dict-of-QString-QVariant QAxBase.propertyBag (<i>self</i>)</h3><p>Returns a name:value map of all the properties exposed by the
+COM object.</p>
+<p>This is more efficient than getting multiple properties
+individually if the COM object supports property bags.</p>
+<p><b>Warning:</b> It is not guaranteed that the property bag
+implementation of the COM object returns all properties, or that
+the properties returned are the same as those available through the
+IDispatch interface.</p>
+<p>See also <a href="qaxbase.html#setPropertyBag">setPropertyBag</a>().</p>
+
+
+<h3 class="fn"><a name="propertyWritable" />bool QAxBase.propertyWritable (<i>self</i>, str)</h3><p>Returns true if the property <i>prop</i> is writable; otherwise
+returns false. By default, all properties are writable.</p>
+<p><b>Warning:</b> Depending on the control implementation this
+setting might be ignored for some properties.</p>
+<p>See also <a href="qaxbase.html#setPropertyWritable">setPropertyWritable</a>() and
+<a href="qaxbase.html#propertyChanged">propertyChanged</a>().</p>
+
+
+<h3 class="fn"><a name="querySubObject" /><a href="qaxobject.html">QAxObject</a> QAxBase.querySubObject (<i>self</i>, str, QVariant&#160;<i>value1</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value2</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value3</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value4</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value5</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value6</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value7</i>&#160;=&#160;QVariant(), QVariant&#160;<i>value8</i>&#160;=&#160;QVariant())</h3><p>Returns a pointer to a <a href="qaxobject.html">QAxObject</a>
+wrapping the COM object provided by the method or property
+<i>name</i>, passing passing the parameters <i>var1</i>,
+<i>var1</i>, <i>var2</i>, <i>var3</i>, <i>var4</i>, <i>var5</i>,
+<i>var6</i>, <i>var7</i> and <i>var8</i>.</p>
+<p>If <i>name</i> is provided by a method the string must include
+the full function prototype.</p>
+<p>If <i>name</i> is a property the string must be the name of the
+property, and <i>var1</i>, ... <i>var8</i> are ignored.</p>
+<p>The returned <a href="qaxobject.html">QAxObject</a> is a child
+of this object (which is either of type <a href="qaxobject.html">QAxObject</a> or <a href="qaxwidget.html">QAxWidget</a>), and is deleted when this object is
+deleted. It is however safe to delete the returned object yourself,
+and you should do so when you iterate over lists of subobjects.</p>
+<p>COM enabled applications usually have an object model publishing
+certain elements of the application as dispatch interfaces. Use
+this method to navigate the hierarchy of the object model, e.g.</p>
+<pre class="highlightedCode brush: cpp">
+ QAxWidget outlook("Outlook.Application");
+ QAxObject *session = outlook.querySubObject("Session");
+ if (session) {
+     QAxObject *defFolder = session-&gt;querySubObject(
+                             "GetDefaultFolder(OlDefaultFolders)",
+                             "olFolderContacts");
+     <span class="comment">//...</span>
+ }
+</pre>
+
+
+<h3 class="fn"><a name="querySubObject-2" /><a href="qaxobject.html">QAxObject</a> QAxBase.querySubObject (<i>self</i>, str, list-of-QVariant)</h3><p>This is an overloaded function.</p>
+<p>The <a href="qvariant.html">QVariant</a> objects in <i>vars</i>
+are updated when the method has out-parameters.</p>
+
+
+<h3 class="fn"><a name="setControl" />bool QAxBase.setControl (<i>self</i>, QString)</h3><h3 class="fn"><a name="setPropertyBag" />QAxBase.setPropertyBag (<i>self</i>, dict-of-QString-QVariant)</h3><p>Sets the properties of the COM object to the corresponding
+values in <i>bag</i>.</p>
+<p><b>Warning:</b> You should only set property bags that have been
+returned by the propertyBag function, as it cannot be guaranteed
+that the property bag implementation of the COM object supports the
+same properties that are available through the IDispatch
+interface.</p>
+<p>See also <a href="qaxbase.html#propertyBag">propertyBag</a>().</p>
+
+
+<h3 class="fn"><a name="setPropertyWritable" />QAxBase.setPropertyWritable (<i>self</i>, str, bool)</h3><p>Sets the property <i>prop</i> to writable if <i>ok</i> is true,
+otherwise sets <i>prop</i> to be read-only. By default, all
+properties are writable.</p>
+<p><b>Warning:</b> Depending on the control implementation this
+setting might be ignored for some properties.</p>
+<p>See also <a href="qaxbase.html#propertyWritable">propertyWritable</a>() and <a href="qaxbase.html#propertyChanged">propertyChanged</a>().</p>
+
+
+<h3 class="fn"><a name="verbs" />QStringList QAxBase.verbs (<i>self</i>)</h3><p>Returns the list of verbs that the COM object can execute. If
+the object does not implement IOleObject, or does not support any
+verbs, then this function returns an empty stringlist.</p>
+<p>Note that the OLE default verbs (OLEIVERB_SHOW etc) are not
+included in the list.</p>
+<p>This function was introduced in Qt 4.1.</p>
+<hr /><h2>Qt Signal Documentation</h2><h3 class="fn"><a name="exception" />void exception (int,const QString&amp;,const QString&amp;,const QString&amp;)</h3><p>This is the default overload of this signal.</p><p>This signal is emitted when the COM object throws an exception
+while called using the OLE automation interface IDispatch.
+<i>code</i>, <i>source</i>, <i>desc</i> and <i>help</i> provide
+information about the exception as provided by the COM server and
+can be used to provide useful feedback to the end user. <i>help</i>
+includes the help file, and the help context ID in brackets, e.g.
+"filename [id]".</p>
+
+
+<h3 class="fn"><a name="propertyChanged" />void propertyChanged (const QString&amp;)</h3><p>This is the default overload of this signal.</p><p>If the COM object supports property notification, this signal
+gets emitted when the property called <i>name</i> is changed.</p>
+
+
+<h3 class="fn"><a name="signal" />void signal (const QString&amp;,int,void *)</h3><p>This is the default overload of this signal.</p><p>This generic signal gets emitted when the COM object issues the
+event <i>name</i>. <i>argc</i> is the number of parameters provided
+by the event (DISPPARAMS.cArgs), and <i>argv</i> is the pointer to
+the parameter values (DISPPARAMS.rgvarg). Note that the order of
+parameter values is turned around, ie. the last element of the
+array is the first parameter in the function.</p>
+<pre class="highlightedCode brush: cpp">
+ void Receiver.slot(const QString &amp;name, int argc, void *argv)
+ {
+     VARIANTARG *params = (VARIANTARG*)argv;
+     if (name.startsWith("BeforeNavigate2(")) {
+         IDispatch *pDisp = params[argc-1].pdispVal;
+         VARIANTARG URL = *params[argc-2].pvarVal;
+         VARIANTARG Flags = *params[argc-3].pvarVal;
+         VARIANTARG TargetFrameName = *params[argc-4].pvarVal;
+         VARIANTARG PostData = *params[argc-5].pvarVal;
+         VARIANTARG Headers = *params[argc-6].pvarVal;
+         bool *Cancel = params[argc-7].pboolVal;
+     }
+ }
+</pre>
+<p>Use this signal if the event has parameters of unsupported data
+types. Otherwise, connect directly to the signal <i>name</i>.</p>
+
+
+<address><hr /><div align="center"><table border="0" cellspacing="0" width="100%"><tr class="address"><td align="left" width="25%">PyQt&#160;4.8.3 for Windows</td><td align="center" width="50%">Copyright &#169; <a href="http://www.riverbankcomputing.com">Riverbank&#160;Computing&#160;Ltd</a> and <a href="http://www.qtsoftware.com">Nokia</a> 2011</td><td align="right" width="25%">Qt&#160;4.7.1</td></tr></table></div></address></body></html>

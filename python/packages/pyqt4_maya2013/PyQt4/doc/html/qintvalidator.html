@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html><head><title>QIntValidator Class Reference</title><style>h3.fn,span.fn { margin-left: 1cm; text-indent: -1cm }
+a:link { color: #004faf; text-decoration: none }
+a:visited { color: #672967; text-decoration: none }
+td.postheader { font-family: sans-serif }
+tr.address { font-family: sans-serif }
+body { background: #ffffff; color: black; }
+</style></head><body><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr /><td align="left" valign="top" width="32"><img align="left" border="0" height="32" src="images/rb-logo.png" width="32" /></td><td width="1">&#160;&#160;</td><td class="postheader" valign="center"><a href="../pyqt4ref.html"><font color="#004faf">Home</font></a>&#160;&#183; <a href="classes.html"><font color="#004faf">All Classes</font></a>&#160;&#183; <a href="modules.html"><font color="#004faf">Modules</font></a></td></table><h1 align="center">QIntValidator Class Reference<br /><sup><sup>[<a href="qtgui.html">QtGui</a> module]</sup></sup></h1><p>The QIntValidator class provides a validator that ensures a
+string contains a valid integer within a specified range. <a href="#details">More...</a></p>
+
+<p>Inherits <a href="qvalidator.html">QValidator</a>.</p><h3>Methods</h3><ul><li><div class="fn" /><b><a href="qintvalidator.html#QIntValidator">__init__</a></b> (<i>self</i>, QObject&#160;<i>parent</i>&#160;=&#160;None)</li><li><div class="fn" /><b><a href="qintvalidator.html#QIntValidator-2">__init__</a></b> (<i>self</i>, int&#160;<i>bottom</i>, int&#160;<i>top</i>, QObject&#160;<i>parent</i>)</li><li><div class="fn" />int <b><a href="qintvalidator.html#bottom">bottom</a></b> (<i>self</i>)</li><li><div class="fn" />QString&#160;<i>input</i> <b><a href="qintvalidator.html#fixup">fixup</a></b> (<i>self</i>, QString&#160;<i>input</i>)</li><li><div class="fn" /><b><a href="qintvalidator.html#fixup-2">fixup</a></b> (<i>self</i>, QString&#160;<i>input</i>)</li><li><div class="fn" /><b><a href="qintvalidator.html#setBottom">setBottom</a></b> (<i>self</i>, int)</li><li><div class="fn" /><b><a href="qintvalidator.html#setRange">setRange</a></b> (<i>self</i>, int&#160;<i>bottom</i>, int&#160;<i>top</i>)</li><li><div class="fn" /><b><a href="qintvalidator.html#setTop">setTop</a></b> (<i>self</i>, int)</li><li><div class="fn" />int <b><a href="qintvalidator.html#top">top</a></b> (<i>self</i>)</li><li><div class="fn" />(QValidator.State, QString, int) <b><a href="qintvalidator.html#validate">validate</a></b> (<i>self</i>, QString, int)</li><li><div class="fn" />(QValidator.State, int) <b><a href="qintvalidator.html#validate-2">validate</a></b> (<i>self</i>, QString, int)</li></ul><a name="details" /><hr /><h2>Detailed Description</h2><p>The QIntValidator class provides a validator that ensures a
+string contains a valid integer within a specified range.</p>
+<p>Example of use:</p>
+<pre class="highlightedCode brush: cpp">
+ QValidator *validator = new QIntValidator(100, 999, this);
+ QLineEdit *edit = new QLineEdit(this);
+
+<span class="comment"> // the edit lineedit will only accept integers between 100 and 999</span>
+ edit-&gt;setValidator(validator);
+</pre>
+<p>Below we present some examples of validators. In practice they
+would normally be associated with a widget as in the example
+above.</p>
+<pre class="highlightedCode brush: cpp">
+ QString str;
+ int pos = 0;
+ QIntValidator v(100, 900, this);
+
+ str = "1";
+ v.validate(str, pos);     <span class="comment">// returns Intermediate</span>
+ str = "012";
+ v.validate(str, pos);     <span class="comment">// returns Intermediate</span>
+
+ str = "123";
+ v.validate(str, pos);     <span class="comment">// returns Acceptable</span>
+ str = "678";
+ v.validate(str, pos);     <span class="comment">// returns Acceptable</span>
+
+ str = "999";
+ v.validate(str, pos);    <span class="comment">// returns Intermediate</span>
+
+ str = "1234";
+ v.validate(str, pos);     <span class="comment">// returns Invalid</span>
+ str = "-123";
+ v.validate(str, pos);     <span class="comment">// returns Invalid</span>
+ str = "abc";
+ v.validate(str, pos);     <span class="comment">// returns Invalid</span>
+ str = "12cm";
+ v.validate(str, pos);     <span class="comment">// returns Invalid</span>
+</pre>
+<p>Notice that the value <tt>999</tt> returns Intermediate. Values
+consisting of a number of digits equal to or less than the max
+value are considered intermediate. This is intended because the
+digit that prevents a number to be in range is not necessarily the
+last digit typed. This also means that an intermediate number can
+have leading zeros.</p>
+<p>The minimum and maximum values are set in one call with <a href="qintvalidator.html#setRange">setRange</a>(), or individually with
+<a href="qintvalidator.html#bottom-prop">setBottom</a>() and
+<a href="qintvalidator.html#top-prop">setTop</a>().</p>
+<p>QIntValidator uses its <a href="qvalidator.html#locale">locale</a>() to interpret the number. For
+example, in Arabic locales, QIntValidator will accept Arabic
+digits. In addition, QIntValidator is always guaranteed to accept a
+number formatted according to the "C" locale.</p>
+<hr /><h2>Method Documentation</h2><h3 class="fn"><a name="QIntValidator" />QIntValidator.__init__ (<i>self</i>, <a href="qobject.html">QObject</a>&#160;<i>parent</i>&#160;=&#160;None)</h3><p>The <i>parent</i> argument, if not None, causes <i>self</i> to be owned by Qt instead of PyQt.</p><p>Constructs a validator with a <i>parent</i> object that accepts
+all integers.</p>
+
+
+<h3 class="fn"><a name="QIntValidator-2" />QIntValidator.__init__ (<i>self</i>, int&#160;<i>bottom</i>, int&#160;<i>top</i>, <a href="qobject.html">QObject</a>&#160;<i>parent</i>)</h3><p>The <i>parent</i> argument, if not None, causes <i>self</i> to be owned by Qt instead of PyQt.</p><p>Constructs a validator with a <i>parent</i>, that accepts
+integers from <i>minimum</i> to <i>maximum</i> inclusive.</p>
+
+
+<h3 class="fn"><a name="bottom" />int QIntValidator.bottom (<i>self</i>)</h3><h3 class="fn"><a name="fixup" />QString&#160;<i>input</i> QIntValidator.fixup (<i>self</i>, QString&#160;<i>input</i>)</h3><p>Reimplemented from <a href="qvalidator.html#fixup">QValidator.fixup</a>().</p>
+
+
+<h3 class="fn"><a name="fixup-2" />QIntValidator.fixup (<i>self</i>, QString&#160;<i>input</i>)</h3><h3 class="fn"><a name="setBottom" />QIntValidator.setBottom (<i>self</i>, int)</h3><h3 class="fn"><a name="setRange" />QIntValidator.setRange (<i>self</i>, int&#160;<i>bottom</i>, int&#160;<i>top</i>)</h3><p>Sets the range of the validator to only accept integers between
+<i>bottom</i> and <i>top</i> inclusive.</p>
+
+
+<h3 class="fn"><a name="setTop" />QIntValidator.setTop (<i>self</i>, int)</h3><h3 class="fn"><a name="top" />int QIntValidator.top (<i>self</i>)</h3><h3 class="fn"><a name="validate" />(<a href="qvalidator.html#State-enum">QValidator.State</a>, QString, int) QIntValidator.validate (<i>self</i>, QString, int)</h3><p>Reimplemented from <a href="qvalidator.html#validate">QValidator.validate</a>().</p>
+<p>Returns <a href="qvalidator.html#State-enum">Acceptable</a> if
+the <i>input</i> is an integer within the valid range, <a href="qvalidator.html#State-enum">Intermediate</a> if the <i>input</i>
+is a prefix of an integer in the valid range, and <a href="qvalidator.html#State-enum">Invalid</a> otherwise.</p>
+<p>If the valid range consists of just positive integers (e.g., 32
+to 100) and <i>input</i> is a negative integer, then Invalid is
+returned. (On the other hand, if the range consists of negative
+integers (e.g., -100 to -32) and <i>input</i> is a positive
+integer, then Intermediate is returned, because the user might be
+just about to type the minus (especially for right-to-left
+languages).</p>
+<pre class="highlightedCode brush: cpp">
+ int pos = 0;
+
+ s = "abc";
+ v.validate(s, pos);    <span class="comment">// returns Invalid</span>
+
+ s = "5";
+ v.validate(s, pos);    <span class="comment">// returns Intermediate</span>
+
+ s = "50";
+ v.validate(s, pos);    <span class="comment">// returns Acceptable</span>
+</pre>
+<p>By default, the <i>pos</i> parameter is not used by this
+validator.</p>
+<h3 class="fn"><a name="validate-2" />(<a href="qvalidator.html#State-enum">QValidator.State</a>, int) QIntValidator.validate (<i>self</i>, QString, int)</h3><address><hr /><div align="center"><table border="0" cellspacing="0" width="100%"><tr class="address"><td align="left" width="25%">PyQt&#160;4.8.3 for Windows</td><td align="center" width="50%">Copyright &#169; <a href="http://www.riverbankcomputing.com">Riverbank&#160;Computing&#160;Ltd</a> and <a href="http://www.qtsoftware.com">Nokia</a> 2011</td><td align="right" width="25%">Qt&#160;4.7.1</td></tr></table></div></address></body></html>
