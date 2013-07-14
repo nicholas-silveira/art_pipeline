@@ -3,7 +3,7 @@ import maya.cmds as cmds
 import maya.mel as mel
 
 import maya_env
-
+import core.pipeline_core
 
 
 '''
@@ -13,20 +13,23 @@ import maya_env
 '''
 class Maya_Menu():
 	def __init__(self):
-		self.tools_menu()
-		self.debug_menu()
+		self.studio_name = core.pipeline_core.studio_name
 		
-
+		self.tools_menu()
+		self.developer_menu()
+		
 	'''Procedure creates top menu in Maya'''
 	def tools_menu(self):
-		
+		tools_menu = 'studioTools'
+		tools_menu_name = '{0} Tools'.format(self.studio_name)
+		print tools_menu_name
 		
 		gMainWindow = mel.eval( '$tmpVar = $gMainWindow' )
 		
-		if cmds.menu ('studioTools', exists=True):
-			cmds.deleteUI ('studioTools', menu=True)
+		if cmds.menu (tools_menu, exists=True):
+			cmds.deleteUI (tools_menu, menu=True)
 		
-		studio_tools_menu = cmds.menu('studioTools', parent= gMainWindow, label= "Studio Tools", to=True)
+		studio_tools_menu = cmds.menu(tools_menu, parent= gMainWindow, label= tools_menu_name, to=True)
 		
 		cmds.menuItem(parent= studio_tools_menu, label= "Animation Tools", subMenu= True, to=True)
 		cmds.menuItem(parent= studio_tools_menu, label= "Rig Tools", subMenu= True, to=True)
@@ -43,13 +46,16 @@ class Maya_Menu():
 	
 			
 			
-	def debug_menu(self):
+	def developer_menu(self):
+		developer_menu = 'studioDeveloper'
+		developer_menu_name = '{0} Developer'.format(self.studio_name)
+	
 		gMainWindow = mel.eval( '$tmpVar = $gMainWindow' )
 		
-		if cmds.menu ('studioDebug', exists=True):
-			cmds.deleteUI ('studioDebug', menu=True)
+		if cmds.menu (developer_menu, exists=True):
+			cmds.deleteUI (developer_menu, menu=True)
 
-		debug_menu = cmds.menu('studioDebug', parent= gMainWindow, label= "Studio Debug", to=True)
+		debug_menu = cmds.menu(developer_menu, parent= gMainWindow, label= developer_menu_name, to=True)
 		cmds.menuItem(parent= debug_menu, label= "Maya Environment")
 		cmds.menuItem(parent= debug_menu, label= "Documents")
 	

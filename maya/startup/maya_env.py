@@ -8,6 +8,11 @@ class Env_Paths():
 		script_path = os.path.dirname( os.path.abspath( __file__ ) )
 		script_path = os.path.dirname( script_path )
 		self.pipeline_path = os.path.dirname( script_path )
+		
+	def core(self):
+		core_paths = ['{0}\\core'.format( self.pipeline_path )]
+		
+		return core_paths
 
 	def maya_2013( self ):
 		#Import Maya paths
@@ -51,8 +56,12 @@ class Env_Paths():
 		elif software == 'maya_2014.0':
 			maya_paths = self.maya_2014()
 			dcc_paths = self.dcc_2014()
+			
+		print 'Core Environment'
+		for path in self.core():
+			print path
 
-		print 'Maya Environment'
+		print '\nMaya Environment'
 		for path in maya_paths:
 			print path
 
@@ -60,7 +69,7 @@ class Env_Paths():
 		for path in dcc_paths:
 			print path
 
-		return maya_paths + dcc_paths
+		return maya_paths + dcc_paths + self.core()
 
 
 
