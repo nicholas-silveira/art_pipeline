@@ -22,8 +22,8 @@ If you have any problems email me at Nicholas.Silveira@gmail.com
 
 import sys
 
-import maya.cmds as cmds
-import maya.OpenMaya as OpenMaya
+import maya.cmds as cmds #@UnresolvedImport
+import maya.OpenMaya as OpenMaya #@UnresolvedImport
 
 VERSION = 1.0
 

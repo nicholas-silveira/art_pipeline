@@ -9,7 +9,7 @@ class Env_Paths():
 		script_path = os.path.dirname( script_path )
 		self.pipeline_path = os.path.dirname( script_path )
 		
-	def core(self):
+	def core( self ):
 		core_paths = ['{0}\\core'.format( self.pipeline_path )]
 		
 		return core_paths

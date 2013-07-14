@@ -1,5 +1,7 @@
 '''IMPORTED MODULES'''
-import pyfbsdk
+import pyfbsdk #@UnresolvedImport
+
+import core.pipeline_core #@UnresolvedImport
 
 
 
@@ -9,7 +11,9 @@ import pyfbsdk
 ========================================================================
 '''
 class Mobu_Menu():
-	def __init__(self, control, event):
+	def __init__( self, control, event ):
+		self.studio_name = core.pipeline_core.studio_name
+		
 		self.menuMgr = pyfbsdk.FBMenuManager()
 		self.tools_menu()
 		self.debug_menu()
@@ -17,15 +21,19 @@ class Mobu_Menu():
 		
 
 	'''Procedure creates top menu in Maya'''
-	def tools_menu(self):
-		if self.menuMgr.GetMenu("Studio Tools") == None:
-			self.menuMgr.InsertBefore(None, "Help", "Studio Tools")	
+	def tools_menu( self ):
+		tools_menu_name = '{0} Tools'.format( self.studio_name )
+		
+		if self.menuMgr.GetMenu( tools_menu_name ) == None:
+			self.menuMgr.InsertBefore( None, 'Help', tools_menu_name )	
 			
 			
 			
-	def debug_menu(self):
-		if self.menuMgr.GetMenu("Studio Debug") == None:
-			self.menuMgr.InsertBefore(None, "Help", "Studio Debug")	
+	def debug_menu( self ):
+		developer_menu_name = '{0} Developer'.format( self.studio_name )
+		
+		if self.menuMgr.GetMenu( developer_menu_name ) == None:
+			self.menuMgr.InsertBefore( None, 'Help', developer_menu_name )	
 	
 
 
