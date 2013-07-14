@@ -41,10 +41,10 @@ and pasty it to your Maya scripts folder (C:\Users\USER NAME\Documents\maya\scri
 ========================================================================
 '''
 
-1. Go to (PIPELINE DIRECTORY\art_pipeline\mobu\startup) copy userSetup.py
-and pasty it to your Mobu scripts folder (C:\Users\Nicholas\Documents\MB\VERSION OF MOBU\config\Scripts)
+1. Go to (PIPELINE DIRECTORY\art_pipeline\mobu\startup) copy PythonStartup
+and pasty it to your Mobu config folder (C:\Users\Nicholas\Documents\MB\VERSION OF MOBU\config)
 
-2. From MoBu scripts Open userSetup.py
+2. From MoBu PythonStartup Open userSetup.py
 
 3. On line 3 (pipeline_dir = '') add your Pipeline directory inside the quotes.
 
