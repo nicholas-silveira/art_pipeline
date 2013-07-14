@@ -1,1 +1,1 @@
-studio_name = 'Studio'
+pipeline_name = 'Studio'

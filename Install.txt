@@ -1,0 +1,58 @@
+'''
+========================================================================
+---->  Install Art Pipeline  <----
+========================================================================
+'''
+
+Follow these instructions below or watch the "How To Install Art Pipeline" tutorial
+here ().
+
+'''
+========================================================================
+---->  Name Your Pipeline  <----
+========================================================================
+'''
+
+1. Go to (PIPELINE DIRECTORY\art_pipeline\core)
+
+2. Open pipeline_core.py
+
+3. On line 1 (pipeline_name = 'Studio') replace Studio with your new pipeline name.
+
+
+'''
+========================================================================
+---->  Install Maya Tools  <----
+========================================================================
+'''
+
+1. Go to (PIPELINE DIRECTORY\art_pipeline\maya\startup) copy userSetup.py
+and pasty it to your Maya scripts folder (C:\Users\USER NAME\Documents\maya\scripts)
+
+2. From Maya scripts Open userSetup.py
+
+3. On line 3 (pipeline_dir = '') add your Pipeline directory inside the quotes.
+
+4. Run Maya!
+
+'''
+========================================================================
+---->  Install Motion Builder Tools  <----
+========================================================================
+'''
+
+1. Go to (PIPELINE DIRECTORY\art_pipeline\mobu\startup) copy userSetup.py
+and pasty it to your Mobu scripts folder (C:\Users\Nicholas\Documents\MB\VERSION OF MOBU\config\Scripts)
+
+2. From MoBu scripts Open userSetup.py
+
+3. On line 3 (pipeline_dir = '') add your Pipeline directory inside the quotes.
+
+4. Run MoBu!
+
+'''
+========================================================================
+---->  Contact  <----
+========================================================================
+'''
+If you have any questions email me at Nicholas.Silveira@gmail.com

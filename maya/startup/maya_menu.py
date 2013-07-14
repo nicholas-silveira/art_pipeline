@@ -12,7 +12,7 @@ import core.pipeline_core #@UnresolvedImport
 '''
 class Maya_Menu():
 	def __init__( self ):
-		self.studio_name = core.pipeline_core.studio_name
+		self.pipeline_name = core.pipeline_core.pipeline_name
 		
 		self.tools_menu()
 		self.developer_menu()
@@ -20,7 +20,7 @@ class Maya_Menu():
 	'''Procedure creates top menu in Maya'''
 	def tools_menu( self ):
 		tools_menu = 'studioTools'
-		tools_menu_name = '{0} Tools'.format( self.studio_name )
+		tools_menu_name = '{0} Tools'.format( self.pipeline_name )
 		
 		gMainWindow = mel.eval( '$tmpVar = $gMainWindow' )
 		
@@ -46,7 +46,7 @@ class Maya_Menu():
 			
 	def developer_menu( self ):
 		developer_menu = 'studioDeveloper'
-		developer_menu_name = '{0} Developer'.format( self.studio_name )
+		developer_menu_name = '{0} Developer'.format( self.pipeline_name )
 	
 		gMainWindow = mel.eval( '$tmpVar = $gMainWindow' )
 		
