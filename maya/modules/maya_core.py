@@ -1,25 +1,3 @@
-'''
-I N S T A L L A T I O N::
-
-Step 1:
-Extract these files into your Maya plugins directory.
-Windows: C:\Users\UserName\Documents\maya\scripts
-
-Step 2:
-Run this in the Maya's Script Editor under the Python tab...
-
-import callback_util
-import callback_example
-
-# Example
-callback_example.Callback_UI().show_ui()
-
-
-If you have any problems email me at Nicholas.Silveira@gmail.com
-'''
-
-
-
 import sys
 
 import maya.cmds as cmds #@UnresolvedImport
@@ -34,7 +12,7 @@ VERSION = 1.0
 ---->  Creates and removes callbacks  <----
 ========================================================================
 '''
-class Callback():
+class Callbacks():
 	"""
 	----> Examples <----
 	
@@ -162,10 +140,6 @@ class Callback():
 	def remove( self ):
 		for callback in self.callback_list:
 				OpenMaya.MMessage.removeCallback( callback )
-
-
-
-class Callback_Info():
 	'''
 	========================================================================
 	---->  Code Sample  <----
@@ -208,33 +182,6 @@ class Callback_Info():
 		cmds.window( 'code_sample_window', title = 'Code Sample' )
 		cmds.paneLayout()
 		cmds.scrollField( editable = False, text = code.replace( '		', '' ) )
-		cmds.showWindow()
-
-	'''
-	========================================================================
-	---->  About No Flip Pole Vector  <----
-	========================================================================
-	'''
-	def about( self, *args ):
-		about = '''
-		"""
-		========================================================================
-		---->  Callback Utilities  <----
-		========================================================================
-		"""
-		This class is to help build a Maya callback foundation. The user should be able to
-		expand on this callback class. I've focused on the Maya scene update callbacks which
-		are very useful for auto update Maya uis.
-		
-		If you have any questions email me at Nicholas.Silveira@gmail.com
-		'''
-
-		if cmds.window( 'about_window', exists = True, q = True ):
-			cmds.deleteUI( 'about_window' )
-
-		cmds.window( 'about_window', title = 'About' )
-		cmds.paneLayout()
-		cmds.scrollField( editable = False, text = about.replace( '		', '' ) )
 		cmds.showWindow()
 
 
