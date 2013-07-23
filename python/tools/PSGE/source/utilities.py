@@ -7,14 +7,17 @@ import PyQt4.QtGui
 import json
 
 
+
 def window_stay_on_top( value, ui_name ):
-   flags = ui_name.windowFlags()
+    flags = ui_name.windowFlags()
 
-   if value:
-      ui_name.setWindowFlags( flags | PyQt4.QtCore.Qt.WindowStaysOnTopHint )
+    if value:
+        ui_name.setWindowFlags( flags | PyQt4.QtCore.Qt.WindowStaysOnTopHint )
 
-   else:
-      ui_name.setWindowFlags( flags & ~PyQt4.QtCore.Qt.WindowStaysOnTopHint )
+    else:
+        ui_name.setWindowFlags( flags & ~PyQt4.QtCore.Qt.WindowStaysOnTopHint )
+
+
 
 '''
 ========================================================================
@@ -22,15 +25,17 @@ def window_stay_on_top( value, ui_name ):
 ========================================================================
 '''
 def add_remove_combo( combo, add = False, remove = False, data = '' ):
-   if add:
-      if data != '':
-         combo.addItem ( data )
-         list_count = combo.count()
-         combo.setCurrentIndex( list_count - 1 )
+    if add:
+        if data != '':
+            combo.addItem ( data )
+            list_count = combo.count()
+            combo.setCurrentIndex( list_count - 1 )
 
-   if remove:
-      current_index = combo.currentIndex ()
-      combo.removeItem ( current_index )
+    if remove:
+        current_index = combo.currentIndex ()
+        combo.removeItem ( current_index )
+
+
 
 '''
 ========================================================================
@@ -38,14 +43,16 @@ def add_remove_combo( combo, add = False, remove = False, data = '' ):
 ========================================================================
 '''
 def get_combo_items( combo ):
-   items = []
+    items = []
 
-   count_items = combo.count()
+    count_items = combo.count()
 
-   for i in range( count_items ):
-      items.append( str( combo.itemText( i ) ) )
+    for i in range( count_items ):
+        items.append( str( combo.itemText( i ) ) )
 
-   return items
+    return items
+
+
 
 '''
 ========================================================================
@@ -53,21 +60,23 @@ def get_combo_items( combo ):
 ========================================================================
 '''
 def search_combo_items( combo, item ):
-   count_items = combo.count()
+    count_items = combo.count()
 
-   if count_items != 0:
-      for i in range( count_items ):
-         if item == str( combo.itemText( i ) ):
-            item_value = i
-            break
+    if count_items != 0:
+        for i in range( count_items ):
+            if item == str( combo.itemText( i ) ):
+                item_value = i
+                break
 
-         else:
-            item_value = None
+            else:
+                item_value = None
 
-      return item_value
+        return item_value
 
-   else:
-      return None
+    else:
+        return None
+
+
 
 '''
 ========================================================================
@@ -75,15 +84,17 @@ def search_combo_items( combo, item ):
 ========================================================================
 '''
 def add_table_item( table, items ):
-   row = table.rowCount()
-   table.insertRow( row )
+    row = table.rowCount()
+    table.insertRow( row )
 
-   column = 0
+    column = 0
 
-   for item in items:
-      item = PyQt4.QtGui.QTableWidgetItem( item )
-      table.setItem ( row, column, item )
-      column += 1
+    for item in items:
+        item = PyQt4.QtGui.QTableWidgetItem( item )
+        table.setItem ( row, column, item )
+        column += 1
+
+
 
 '''
 ========================================================================
@@ -91,11 +102,13 @@ def add_table_item( table, items ):
 ========================================================================
 '''
 def remove_selected_table_row( table ):
-   sel_rows = table.selectionModel().selectedRows()
+    sel_rows = table.selectionModel().selectedRows()
 
-   if sel_rows != []:
-      for sel_row in reversed( sel_rows ):
-         table.removeRow( sel_row.row() )
+    if sel_rows != []:
+        for sel_row in reversed( sel_rows ):
+            table.removeRow( sel_row.row() )
+
+
 
 '''
 ========================================================================
@@ -103,24 +116,28 @@ def remove_selected_table_row( table ):
 ========================================================================
 '''
 def get_selected_table_items( table ):
-   column_count = table.columnCount()
-   sel_rows = table.selectionModel().selectedRows()
+    column_count = table.columnCount()
+    sel_rows = table.selectionModel().selectedRows()
 
-   items = []
+    items = []
 
-   if sel_rows != []:
-      for row in sel_rows:
-         for column in range( column_count ):
-            items.append( str( table.item( row.row(), column ).text() ) )
+    if sel_rows != []:
+        for row in sel_rows:
+            for column in range( column_count ):
+                items.append( str( table.item( row.row(), column ).text() ) )
 
-   return items
+    return items
+
+
 '''
 ========================================================================
 ---->  Procedure sets passed directory to self.dir_line  <----
 ========================================================================
 '''
 def set_line( line, data ):
-   line.setText( str( data ) )
+    line.setText( str( data ) )
+
+
 
 '''
 ========================================================================
@@ -129,10 +146,12 @@ create it  <----
 ========================================================================
 '''
 def get_directory( file_location ):
-   file_directory = os.path.dirname( file_location )
+    file_directory = os.path.dirname( file_location )
 
-   if not os.path.exists( file_directory ):
-      os.makedirs( file_directory )
+    if not os.path.exists( file_directory ):
+        os.makedirs( file_directory )
+
+
 
 '''
 ========================================================================
@@ -140,15 +159,17 @@ def get_directory( file_location ):
 ========================================================================
 '''
 def yes_no_dialog( self, name, message ):
-   reply = PyQt4.QtGui.QMessageBox.question( self, name, message,
-   PyQt4.QtGui.QMessageBox.Yes | 
-   PyQt4.QtGui.QMessageBox.No )
+    reply = PyQt4.QtGui.QMessageBox.question( self, name, message,
+    PyQt4.QtGui.QMessageBox.Yes |
+    PyQt4.QtGui.QMessageBox.No )
 
-   if reply == PyQt4.QtGui.QMessageBox.Yes:
-      return True
+    if reply == PyQt4.QtGui.QMessageBox.Yes:
+        return True
 
-   elif reply == PyQt4.QtGui.QMessageBox.No:
-      return False
+    elif reply == PyQt4.QtGui.QMessageBox.No:
+        return False
+
+
 
 '''
 ========================================================================
@@ -157,12 +178,14 @@ def yes_no_dialog( self, name, message ):
 '''
 def write_json_file( file_location, data, *args ):
 
-   get_directory( file_location )
-   json_data = json.dumps( data, ensure_ascii = True , indent = 2 )
+    get_directory( file_location )
+    json_data = json.dumps( data, ensure_ascii = True , indent = 2 )
 
-   data_file = open( file_location, "w" )
-   data_file.write( json_data )
-   data_file.close()
+    data_file = open( file_location, "w" )
+    data_file.write( json_data )
+    data_file.close()
+
+
 
 '''
 ========================================================================
@@ -170,7 +193,22 @@ def write_json_file( file_location, data, *args ):
 ========================================================================
 '''
 def load_json_file( file_location ):
-   data_file = open( file_location )
-   data = json.load( data_file )
+    data_file = open( file_location )
+    data = json.load( data_file )
 
-   return data
+    return data
+
+
+
+'''
+========================================================================
+---->  Procedure parses and returns project's path  <----
+========================================================================
+'''
+def get_project_directory( project_path ):
+
+    startup_data = load_json_file( project_path )
+    directory = startup_data['project_directory']
+
+
+    return directory

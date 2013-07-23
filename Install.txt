@@ -13,9 +13,9 @@ here ().
 ========================================================================
 '''
 
-1. Go to (PIPELINE DIRECTORY\art_pipeline\core)
+1. Go to (PIPELINE DIRECTORY\art_pipeline\pipeline)
 
-2. Open pipeline_core.py
+2. Open config.py
 
 3. On line 1 (pipeline_name = 'Studio') replace Studio with your new pipeline name.
 
@@ -29,11 +29,11 @@ here ().
 1. Go to (PIPELINE DIRECTORY\art_pipeline\maya\startup) copy userSetup.py
 and pasty it to your Maya scripts folder (C:\Users\USER NAME\Documents\maya\scripts)
 
-2. From Maya scripts Open userSetup.py
+2. Run Maya.
 
-3. On line 3 (pipeline_dir = '') add your Pipeline directory inside the quotes.
+3. You should see a ui popup behind Maya. Click "Browse" and locate and add your "art_pipeline" folder.
 
-4. Run Maya!
+4. Now open a new Maya scene and you should see your dropdown menu
 
 '''
 ========================================================================

@@ -1,13 +1,52 @@
-import maya.mel as mel #@UnresolvedImport
+"""
+Sets up Maya Tools
+*Author:*
+	* Nicholas Silveira, Nicholas.Silveira@gmail.com, Jul 21, 2013 4:52:44 PM
+"""
+
+import os
+
 import maya.cmds as cmds #@UnresolvedImport
+import maya.mel as mel #@UnresolvedImport
 
 import maya_env
 import maya_menu
 
+'''
+========================================================================
+---->  Setup  <----
+========================================================================
+'''
 class Setup():
+	'''
+	========================================================================
+	---->  Runs Script Node On NewSceneOpened <----
+	========================================================================
+	'''
 	def __init__( self ):
+
+		cmds.scriptJob( event = ['NewSceneOpened', self.custom_maya] )
+
+	'''
+	========================================================================
+	---->  Builds Custom Maya Tools <----
+	========================================================================
+	'''
+	def custom_maya( self ):
+		maya_menu.Maya_Menu()
+	
 		maya_version = str( 'maya_{0}'.format( mel.eval( 'getApplicationVersionAsFloat' ) ) )
-		maya_env.Env_Paths().add_paths( maya_version )
+		maya_paths = maya_env.Env_Paths().get_paths( maya_version )
 
-		cmds.scriptJob( event = ['NewSceneOpened', maya_menu.Maya_Menu] )
+		for path in maya_paths:
+			if 'shelves' in path:
+				os.chdir( path )
 
+				for item in os.listdir( "." ):
+					if item.endswith( ".mel" ):
+						try:
+							path = path.replace( '\\', '/' )
+							mel.eval( 'loadNewShelf "{0}/{1}";'.format( path, item ) )
+
+						except:
+							pass
