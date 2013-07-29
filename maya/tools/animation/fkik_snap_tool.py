@@ -31,6 +31,7 @@ class FKIK_Snap_Tool():
 		selected = cmds.ls( sl = True )
 
 		controller_list = {}
+		opposite_set = None
 		auto_key = cmds.autoKeyframe( st = True, q = True )
 
 		if auto_key:
@@ -78,7 +79,7 @@ class FKIK_Snap_Tool():
 					if snap_obj:
 						snap_obj = snap_obj[0]
 
-						tra = cmds.xform( snap_obj, ws = True, t = True, q = True )
+						tra = cmds.xform( snap_obj, ws = True, rp = True, q = True )
 						rot = cmds.xform( snap_obj, ws = True, ro = True, q = True )
 
 						try:
@@ -91,21 +92,45 @@ class FKIK_Snap_Tool():
 							cmds.xform( controller, ws = True, ro = rot )
 
 						except:
-							pass
+							try:
+								rot_x = cmds.getAttr( '{0}.rotateX'.format( snap_obj ) )
+								cmds.setAttr( '{0}.rotateX'.format( controller ), rot_x )
 
-			switch_attr = cmds.listConnections( '{0}.{1}'.format( opposite_set, self.switch_parent_str ), plugs = True )[0]
+							except:
+								pass
 
-			current_time = cmds.currentTime( query = True )
-			cmds.setKeyframe( switch_attr, time = current_time - 1 )
-			cmds.setKeyframe( cmds.sets( obj_set, q = True ), cmds.sets( opposite_set, q = True ) )
+							try:
+								rot_x = cmds.getAttr( '{0}.rotateY'.format( snap_obj ) )
+								cmds.setAttr( '{0}.rotateY'.format( controller ), rot_x )
 
-			if cmds.getAttr( switch_attr ) == 0:
-				cmds.setAttr( switch_attr, 1 )
+							except:
+								pass
 
-			elif cmds.getAttr( switch_attr ) == 1:
-				cmds.setAttr( switch_attr, 0 )
+							try:
+								rot_x = cmds.getAttr( '{0}.rotateZ'.format( snap_obj ) )
+								cmds.setAttr( '{0}.rotateZ'.format( controller ), rot_x )
 
-			cmds.setKeyframe( switch_attr )
+							except:
+								pass
+
+			if not opposite_set:
+				OpenMaya.MGlobal.displayError( "Can not find FKIK Snap on selected controller!" )
+
+			else:
+
+				switch_attr = cmds.listConnections( '{0}.{1}'.format( opposite_set, self.switch_parent_str ), plugs = True )[0]
+
+				current_time = cmds.currentTime( query = True )
+				cmds.setKeyframe( switch_attr, time = current_time - 1 )
+				cmds.setKeyframe( cmds.sets( obj_set, q = True ), cmds.sets( opposite_set, q = True ) )
+
+				if cmds.getAttr( switch_attr ) == 0:
+					cmds.setAttr( switch_attr, 1 )
+
+				elif cmds.getAttr( switch_attr ) == 1:
+					cmds.setAttr( switch_attr, 0 )
+
+				cmds.setKeyframe( switch_attr )
 
 		else:
 			OpenMaya.MGlobal.displayError( "You need to select a controller!" )

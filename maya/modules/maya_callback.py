@@ -12,7 +12,7 @@ VERSION = 1.0
 ---->  Creates and removes callbacks  <----
 ========================================================================
 '''
-class Callbacks():
+class Maya_Callback():
 	"""
 	----> Examples <----
 	
@@ -48,8 +48,13 @@ class Callbacks():
 		* nick.silveira, Nicholas.Silveira@gmail.com, Jun 15, 2013 7:39:20 PM
 	"""
 	def __init__( self, procedure, window = None ):
+		# Get callback procedure
 		self.procedure = procedure
+
+		# Get callbacks main window
 		self.window = window
+
+		# Initiate callback list
 		self.callback_list = []
 
 	'''
@@ -102,6 +107,81 @@ class Callbacks():
 
 	'''
 	========================================================================
+	---->  Changed Attribute Callback  <----
+	========================================================================
+	'''
+	def add_attr( self, obj_name, attr_name ):
+		"""
+		*Arguments:*
+			* ``obj_name`` Pass object name
+			* ``attr_name`` Pass attribute name
+
+		*Examples:* ::
+			# Import Python modules
+			import sys
+
+			# Import Maya modules
+			import maya.cmds as cmds
+			
+			# Import Callback module
+			import maya_callback
+			reload(maya_callback)
+			
+			# Global Variables
+			locator_name = 'callback_loc'
+			attr_name = 'translate'
+			
+			# Print out 'Attribute Callback Works!'
+			def print_something( *args ):
+				sys.stdout.write( '// Result: Attribute Callback Works!' )
+			
+			# Create space locator
+			locator = cmds.spaceLocator( n = locator_name )[0]
+			
+			# Create callback & add proc
+			callback = maya_callback.Maya_Callback( ( print_something ) )
+			
+			# Add attribute callback
+			callback.add_attr( locator, attr_name )
+			
+			# Remove callback
+			callback.remove()
+		"""
+		self.obj_name = obj_name
+		self.attr_name = attr_name
+
+		sel = cmds.ls( sl = True )
+		cmds.select( obj_name )
+
+		node = self.get_mobject( obj_name )
+		MSelectionList = OpenMaya.MSelectionList()
+		OpenMaya.MGlobal.getActiveSelectionList( MSelectionList )
+		MSelectionList.getDependNode( 0, node )
+
+		self.callback_list.append( OpenMaya.MNodeMessage.addAttributeChangedCallback( node, self.run_add_attr, None ) )
+
+		cmds.select( sel )
+
+	'''
+	========================================================================
+	---->  Run Changed Attribute Callback  <----
+	========================================================================
+	'''
+	def run_add_attr( self, message, m_obj, *args ):
+		"""
+		*Arguments:*
+			* ``message`` Callback passes a message ID
+			* ``m_obj`` Callback passes MObject
+		"""
+		node_name, attr_name = m_obj.name().split( '.' )
+
+		if message == 2056:
+			if node_name == self.obj_name:
+				if attr_name == self.attr_name:
+					self.run_callback()
+
+	'''
+	========================================================================
 	---->  Runs passed proc and removes ui callbacks if ui dosn't exist  <----
 	========================================================================
 	'''
@@ -140,6 +220,14 @@ class Callbacks():
 	def remove( self ):
 		for callback in self.callback_list:
 				OpenMaya.MMessage.removeCallback( callback )
+
+	def get_mobject( self, name ):
+	    selectionList = OpenMaya.MSelectionList()
+	    selectionList.add( name )
+	    node = OpenMaya.MObject()
+	    selectionList.getDependNode( 0, node )
+	    return node
+
 	'''
 	========================================================================
 	---->  Code Sample  <----
