@@ -28,7 +28,7 @@ class DAG_Node():
 	def __init__( self, node = None ):
 		if not node:
 			node = cmds.ls( sl = True )[0]
-		
+
 		selection_list = OpenMaya.MSelectionList()
 		selection_list.add( node )
 		self.m_obj = OpenMaya.MObject()
@@ -46,7 +46,7 @@ class DAG_Node():
 		"""
 		nodeFn = OpenMaya.MFnDagNode( self.m_obj )
 		node_name = nodeFn.fullPathName()
-		
+
 		return node_name
 
 	'''
@@ -88,3 +88,36 @@ class DAG_Node():
 	'''
 	def set_parent( self, parent ):
 		cmds.parent( self.name(), parent.name() )
+
+	'''
+	========================================================================
+	---->  DAG Rename  <----
+	========================================================================
+	'''
+	def rename( self, name ):
+		return cmds.rename( self.name(), name )
+
+	'''
+	========================================================================
+	---->  DAG Parent Constraint  <----
+	========================================================================
+	'''
+	def parent_constraint( self, parent, mo_value = False ):
+		return cmds.parentConstraint( parent.name(), self.name(), mo = mo_value )
+
+	'''
+	========================================================================
+	---->  DAG Parent Constraint  <----
+	========================================================================
+	'''
+	def scale_constraint( self, parent, mo_value = False ):
+		return cmds.scaleConstraint( parent.name(), self.name(), mo = mo_value )
+
+	'''
+	========================================================================
+	---->  DAG Hide  <----
+	========================================================================
+	'''
+	def hide( self ):
+		cmds.hide( self.name() )
+
