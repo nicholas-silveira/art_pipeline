@@ -9,15 +9,7 @@ Mayas Pipeline Menu
 import maya.cmds as cmds #@UnresolvedImport
 import maya.mel as mel #@UnresolvedImport
 
-import pipeline.config #@UnresolvedImport
-
-import maya_env
-
-import animation.fkik_snap_tool #@UnresolvedImport
-import animation.zero_out_tool #@UnresolvedImport
-
-import rigging.fkik_snap_setup #@UnresolvedImport
-import rigging.no_flip_pole_vector_tool #@UnresolvedImport
+import core.config #@UnresolvedImport
 
 
 
@@ -28,8 +20,7 @@ import rigging.no_flip_pole_vector_tool #@UnresolvedImport
 '''
 class Maya_Menu():
 	def __init__( self ):
-		self.add_maya_script_paths()
-		self.pipeline_name = pipeline.config.pipeline_name
+		self.pipeline_name = core.config.pipeline_name
 
 		self.tools_menu()
 
@@ -50,46 +41,22 @@ class Maya_Menu():
 		studio_tools_menu = cmds.menu( tools_menu, parent = gMainWindow, label = tools_menu_name, to = True )
 
 		animation_menu = cmds.menuItem( parent = studio_tools_menu, label = "Animation Tools", subMenu = True, to = True )
-		cmds.menuItem( parent = animation_menu, label = "FKIK Snap Tool", to = True, c = animation.fkik_snap_tool.FKIK_Snap_Tool )
-		cmds.menuItem( parent = animation_menu, label = "Zero Out Tool", to = True, c = animation.zero_out_tool.Zero_Out_Tool )
+		cmds.menuItem( parent = animation_menu, label = "FKIK Snap Tool", to = True, c = self.test )
+		cmds.menuItem( parent = animation_menu, label = "Zero Out Tool", to = True )
 
 		rig_menu = cmds.menuItem( parent = studio_tools_menu, label = "Rig Tools", subMenu = True, to = True )
-		cmds.menuItem( parent = rig_menu, label = "FKIK Snap Setup", to = True, c = self.fkik_snap_setup )
-		cmds.menuItem( parent = rig_menu, label = "No Flip Pole Vector Setup", to = True, c = self.no_flip_pole_vector_setup )
+		cmds.menuItem( parent = rig_menu, label = "FKIK Snap Setup", to = True )
+		cmds.menuItem( parent = rig_menu, label = "No Flip Pole Vector Setup", to = True )
 
-	'''
-	========================================================================
-	---->  FKIK Snap Setup  <----
-	========================================================================
-	'''
-	def fkik_snap_setup( self, *args ):
-		rigging.fkik_snap_setup.FKIK_Snap_Setup().show_ui()
+		developer_menu = 'developerTools'
+		developer_menu_name = '{0} Developer'.format( self.pipeline_name )
 
-	'''
-	========================================================================
-	---->  No Flip Pole Vector Setup  <----
-	========================================================================
-	'''
-	def no_flip_pole_vector_setup( self, *args ):
-		rigging.no_flip_pole_vector_tool.No_Flip_Pole_Vector().show_ui()
+		if cmds.menu ( developer_menu, exists = True ):
+			cmds.deleteUI ( developer_menu, menu = True )
 
-	'''
-	========================================================================
-	---->  Add Maya Script Paths  <----
-	========================================================================
-	'''
-	def add_maya_script_paths( self ):
-		maya_version = str( 'maya_{0}'.format( mel.eval( 'getApplicationVersionAsFloat' ) ) )
-		maya_paths = maya_env.Env_Paths().get_paths( maya_version )
+		studio_developer_menu = cmds.menu( developer_menu, parent = gMainWindow, label = developer_menu_name, to = True )
+		cmds.menuItem( parent = studio_developer_menu, label = "Environment Tool", to = True )
 
-		get_script_env_string = mel.eval( 'getenv "MAYA_SCRIPT_PATH";' )
-		get_script_env = get_script_env_string.split( ';' )
+	def test( self, *args ):
+		pass
 
-		for path in maya_paths:
-			path = path.replace( '\\', '/' )
-
-			if path not in get_script_env:
-				get_script_env.append( path )
-
-		get_script_env = ';'.join( get_script_env )
-		mel.eval( 'putenv "MAYA_SCRIPT_PATH" "{0}";'.format( get_script_env ) )

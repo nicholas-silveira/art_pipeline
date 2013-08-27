@@ -24,8 +24,29 @@ class Setup():
 	========================================================================
 	'''
 	def __init__( self ):
-
+		self.add_maya_script_paths()
 		cmds.scriptJob( event = ['NewSceneOpened', self.custom_maya] )
+
+	'''
+	========================================================================
+	---->  Add Maya Script Paths  <----
+	========================================================================
+	'''
+	def add_maya_script_paths( self ):
+		maya_version = str( 'maya_{0}'.format( mel.eval( 'getApplicationVersionAsFloat' ) ) )
+		maya_paths = maya_env.Env_Paths().get_paths( maya_version )
+
+		get_script_env_string = mel.eval( 'getenv "MAYA_SCRIPT_PATH";' )
+		get_script_env = get_script_env_string.split( ';' )
+
+		for path in maya_paths:
+			path = path.replace( '\\', '/' )
+
+			if path not in get_script_env:
+				get_script_env.append( path )
+
+		get_script_env = ';'.join( get_script_env )
+		mel.eval( 'putenv "MAYA_SCRIPT_PATH" "{0}";'.format( get_script_env ) )
 
 	'''
 	========================================================================
@@ -34,7 +55,7 @@ class Setup():
 	'''
 	def custom_maya( self ):
 		maya_menu.Maya_Menu()
-	
+
 		maya_version = str( 'maya_{0}'.format( mel.eval( 'getApplicationVersionAsFloat' ) ) )
 		maya_paths = maya_env.Env_Paths().get_paths( maya_version )
 

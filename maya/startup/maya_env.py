@@ -33,10 +33,8 @@ class Env_Paths():
 	'''
 	def maya_2013( self ):
 		#Import Maya paths
-		maya_paths = ['{0}\\maya\\shelves'.format( self.pipeline_path ),
-					  	  '{0}\\maya\\tools'.format( self.pipeline_path ),
-					  	  '{0}\\maya\\tools\\animation'.format( self.pipeline_path ),
-					  	  '{0}\\maya\\tools\\rigging'.format( self.pipeline_path )]
+		maya_paths = ['{0}\\maya\\python\\lib\\oopmaya\\core'.format( self.pipeline_path ),
+					  	  '{0}\\maya\\python\\lib\\oopmaya\\tools'.format( self.pipeline_path )]
 
 		return maya_paths
 
@@ -47,12 +45,21 @@ class Env_Paths():
 	'''
 	def maya_2014( self ):
 		#Import Maya paths
-		maya_paths = ['{0}\\maya\\shelves'.format( self.pipeline_path ),
-					  	  '{0}\\maya\\tools'.format( self.pipeline_path ),
-					  	  '{0}\\maya\\tools\\animation'.format( self.pipeline_path ),
-					  	  '{0}\\maya\\tools\\rigging'.format( self.pipeline_path )]
+		maya_paths = ['{0}\\maya\\python\\lib\\oopmaya\\core'.format( self.pipeline_path ),
+					  	  '{0}\\maya\\python\\lib\\oopmaya\\tools'.format( self.pipeline_path )]
 
 		return maya_paths
+
+	'''
+	========================================================================
+	---->  Maya 2014 Environment Paths  <----
+	========================================================================
+	'''
+	def dcc( self ):
+		#Import Maya paths
+		dcc_paths = ['{0}\\dcc\\python\\lib'.format( self.pipeline_path )]
+
+		return dcc_paths
 
 	'''
 	========================================================================
@@ -78,7 +85,7 @@ class Env_Paths():
 		elif software == 'maya_2014.0':
 			maya_paths = self.maya_2014()
 
-		print 'Core Pipeline Environment'
+		print '\nCore Pipeline Environment'
 		for path in self.core():
 			print path
 
@@ -86,10 +93,10 @@ class Env_Paths():
 		for path in maya_paths:
 			print path
 
-		return maya_paths + self.core()
+		print '\nDCC Environment'
+		for path in self.dcc():
+			print path
 
-
-
-
+		return self.core() + maya_paths + self.dcc()
 
 

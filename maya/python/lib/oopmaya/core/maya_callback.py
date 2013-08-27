@@ -222,11 +222,11 @@ class Maya_Callback():
 				OpenMaya.MMessage.removeCallback( callback )
 
 	def get_mobject( self, name ):
-	    selectionList = OpenMaya.MSelectionList()
-	    selectionList.add( name )
-	    node = OpenMaya.MObject()
-	    selectionList.getDependNode( 0, node )
-	    return node
+		selectionList = OpenMaya.MSelectionList()
+		selectionList.add( name )
+		node = OpenMaya.MObject()
+		selectionList.getDependNode( 0, node )
+		return node
 
 	'''
 	========================================================================

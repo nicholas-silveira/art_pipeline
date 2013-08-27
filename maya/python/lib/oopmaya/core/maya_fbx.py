@@ -1,7 +1,6 @@
 import maya.cmds as cmds
 import maya.mel as mel
 
-import utilities.maya_message as maya_message
 
 
 

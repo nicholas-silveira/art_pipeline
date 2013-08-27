@@ -1,29 +1,39 @@
 import maya.cmds as cmds # @UnresolvedImport
 
-import utilities.maya_dag as maya_dag
-reload( maya_dag )
-
-import utilities.maya_search as maya_search
-reload( maya_search )
+import oopmaya.core as oopmaya # @UnresolvedImport
+reload( oopmaya )
 
 
+
+'''
+========================================================================
+---->  Simulation Tool  <----
+========================================================================
+'''
 class Simulation_Tool():
+	'''
+	========================================================================
+	---->  Add Rigid Body  <----
+	========================================================================
+	'''
 	def add_rigid_body( self, objects, magnitude = 50 ):
-		objects = maya_search.get_object_type( objects, 'mesh' )
 		
 		cmds.rigidBody( objects, active = False, m = magnitude, collisions = False )
 		
 		cmds.gravity( pos = [0, 0, 0], m = magnitude, att = 0, dx = 0, dy = -1, dz = 0, mxd = -1, vsh = 'none', vex = 0, vof = [0, 0, 0], vsw = 360, tsr = 0.5 )
-		gravity_dag = maya_dag.DAG_Node()
+		gravity_dag = oopmaya.DAG_Node()
 		cmds.connectDynamic( objects, fields = gravity_dag.name() )
 
+	'''
+	========================================================================
+	---->  Create Crack Distance  <----
+	========================================================================
+	'''
 	def create_crack_distance( self, objects ):
 		distance_locator_name = 'distance_locator'
-		
-		objects = maya_search.get_object_type( objects, 'mesh' )
-		
+				
 		cmds.spaceLocator( n = distance_locator_name )
-		distance_locator_dag = maya_dag.DAG_Node()
+		distance_locator_dag = oopmaya.DAG_Node()
 
 		for obj in objects:
 			distance_node = cmds.shadingNode ( 'distanceBetween', asUtility = True, name = '{0}Distance_node'.format( obj ) )
@@ -31,13 +41,21 @@ class Simulation_Tool():
 			cmds.connectAttr ( '{0}.worldMatrix[0]'.format( distance_locator_dag.name() ), '{0}.inMatrix1'.format( distance_node ), force = True )
 			cmds.connectAttr ( '{0}.transMinusRotatePivot'.format( obj ), '{0}.point2'.format( distance_node ), force = True )
 			
-			cmds.addAttr( distance_locator_dag.name(), ln = obj, at = "message" )
-			cmds.addAttr( distance_node, ln = distance_locator_name, at = "message" )
+			if not cmds.objExists( '{0}.{1}'.format( distance_locator_dag.name(), obj ) ):
+				cmds.addAttr( distance_locator_dag.name(), ln = obj, at = "message" )
+				
+			if not cmds.objExists( '{0}.{1}'.format( distance_node, distance_locator_name ) ):
+				cmds.addAttr( distance_node, ln = distance_locator_name, at = "message" )
 			
 			cmds.connectAttr ( '{0}.{1}'.format( distance_node, distance_locator_name ), '{0}.{1}'.format( distance_locator_dag.name(), obj ), force = True )
 			
 		cmds.select( distance_locator_dag.name() )
 
+	'''
+	========================================================================
+	---->  Build Crack Distance  <----
+	========================================================================
+	'''
 	def build_crack_distance( self, distance_locator ):
 		obj_distance = {}
 		
@@ -69,20 +87,34 @@ class Simulation_Tool():
 				cmds.setAttr( obj_active, 1 )
 				cmds.setKeyframe( obj_active, time = current_time )
 
-	def bake_sim( self, objects ):
-		bake_attr = []
+	'''
+	========================================================================
+	---->  Bake Sim  <----
+	========================================================================
+	'''
+	def bake_sim( self, objects, bake_attr = ['all'] ):
+		bake_attr_list = []
 		
 		min_time = cmds.playbackOptions( min = True, q = True )
 		max_time = cmds.playbackOptions( max = True, q = True )
 		
-		objects = maya_search.get_object_type( objects, 'mesh' )
-		
 		for obj in objects:
-			bake_attr.append( '{0}.translateX'.format( obj ) )
-			bake_attr.append( '{0}.translateY'.format( obj ) )
-			bake_attr.append( '{0}.translateZ'.format( obj ) )
+			if 'all' in bake_attr or 'translate' in bake_attr:
+				bake_attr_list.append( '{0}.translateX'.format( obj ) )
+				bake_attr_list.append( '{0}.translateY'.format( obj ) )
+				bake_attr_list.append( '{0}.translateZ'.format( obj ) )
+				
+			if 'all' in bake_attr or 'rotate' in bake_attr:
+				bake_attr_list.append( '{0}.rotateX'.format( obj ) )
+				bake_attr_list.append( '{0}.rotateY'.format( obj ) )
+				bake_attr_list.append( '{0}.rotateZ'.format( obj ) )
+				
+			if 'all' in bake_attr or 'scale' in bake_attr:
+				bake_attr_list.append( '{0}.scaleX'.format( obj ) )
+				bake_attr_list.append( '{0}.scaleY'.format( obj ) )
+				bake_attr_list.append( '{0}.scaleZ'.format( obj ) )
 		
-		cmds.bakeResults( bake_attr, simulation = True, t = ( min_time, max_time ) )
+		cmds.bakeResults( bake_attr_list, simulation = True, t = ( min_time, max_time ) )
 		cmds.DeleteRigidBodies()
 		
 		
