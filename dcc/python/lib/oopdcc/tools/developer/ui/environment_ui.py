@@ -1,8 +1,6 @@
-import sys
+import maya.cmds as cmds # @UnresolvedImport
 
-import maya.cmds as cmds #@UnresolvedImport
-
-import oopdcc.tools #@UnresolvedImport
+import oopdcc.core # @UnresolvedImport
 
 
 WINDOW_NAME = 'environment_window'
@@ -33,4 +31,4 @@ class Environment_UI():
 		self.load_ui()
 
 	def load_ui( self ):
-		cmds.textScrollList( self.environment_scroll, append = oopdcc.tools.get_environment(), e = True )
+		cmds.textScrollList( self.environment_scroll, append = oopdcc.core.get_environment(), e = True )
