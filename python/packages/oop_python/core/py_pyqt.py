@@ -3,9 +3,16 @@ import os
 
 import PyQt4.QtCore
 import PyQt4.QtGui
+import PyQt4.uic
 
 import json
 
+import logging
+
+
+def supression_warnings():
+	PyQt4.uic.properties.logger.setLevel(logging.WARNING)
+	PyQt4.uic.uiparser.logger.setLevel(logging.WARNING)
 
 def window_stay_on_top( value, ui_name ):
    flags = ui_name.windowFlags()
