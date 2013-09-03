@@ -33,8 +33,7 @@ class Env_Paths():
 	'''
 	def maya_2013( self ):
 		#Import Maya paths
-		maya_paths = ['{0}\\maya\\python\\lib\\oopmaya\\core'.format( self.pipeline_path ),
-					  	  '{0}\\maya\\python\\lib\\oopmaya\\tools'.format( self.pipeline_path )]
+		maya_paths = ['{0}\\maya\\packages'.format( self.pipeline_path )]
 
 		return maya_paths
 
@@ -45,8 +44,7 @@ class Env_Paths():
 	'''
 	def maya_2014( self ):
 		#Import Maya paths
-		maya_paths = ['{0}\\maya\\python\\lib\\oopmaya\\core'.format( self.pipeline_path ),
-					  	  '{0}\\maya\\python\\lib\\oopmaya\\tools'.format( self.pipeline_path )]
+		maya_paths = ['{0}\\maya\\packages'.format( self.pipeline_path )]
 
 		return maya_paths
 
@@ -57,7 +55,18 @@ class Env_Paths():
 	'''
 	def dcc( self ):
 		#Import Maya paths
-		dcc_paths = ['{0}\\dcc\\python\\lib'.format( self.pipeline_path )]
+		dcc_paths = ['{0}\\dcc\\packages'.format( self.pipeline_path )]
+
+		return dcc_paths
+	
+	'''
+	========================================================================
+	---->  Python Environment Paths  <----
+	========================================================================
+	'''
+	def python( self ):
+		#Import Python paths
+		dcc_paths = ['{0}\\python\\packages'.format( self.pipeline_path )]
 
 		return dcc_paths
 
@@ -76,27 +85,38 @@ class Env_Paths():
 	---->  Get Paths  <----
 	========================================================================
 	'''
-	def get_paths( self, software = None ):
-		maya_paths = []
+	def get_paths( self, software = None, print_paths = True ):
+		paths = []
 
 		if software == 'maya_2013.0':
 			maya_paths = self.maya_2013()
 
 		elif software == 'maya_2014.0':
 			maya_paths = self.maya_2014()
+			
+		core_paths = self.core()
+		dcc_paths = self.dcc()
+		python_paths = self.python()
+		
+		paths += maya_paths + core_paths + dcc_paths + python_paths
+						
+		if print_paths:			
+			print '\nCore Pipeline Environment'
+			for path in core_paths:
+				print path
+	
+			print '\nMaya Pipeline Environment'
+			for path in maya_paths:
+				print path
+	
+			print '\nDCC Environment'
+			for path in dcc_paths:
+				print path
+				
+			print '\nPython Environment'
+			for path in python_paths:
+				print path
 
-		print '\nCore Pipeline Environment'
-		for path in self.core():
-			print path
-
-		print '\nMaya Pipeline Environment'
-		for path in maya_paths:
-			print path
-
-		print '\nDCC Environment'
-		for path in self.dcc():
-			print path
-
-		return self.core() + maya_paths + self.dcc()
+		return paths
 
 

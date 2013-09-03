@@ -1,10 +1,10 @@
-import pysideuic
+import pysideuic #@UnresolvedImport
 import xml.etree.ElementTree as xml
 from cStringIO import StringIO
 
-import PySide.QtGui
+import PySide.QtGui #@UnresolvedImport
 
-def get_ui_handle( ui_file ):
+def get_ui_class( ui_file ):
    """
    Pablo Winant
    """
@@ -13,7 +13,7 @@ def get_ui_handle( ui_file ):
    form_class = parsed.find( 'class' ).text
    
    with open( ui_file, 'r' ) as f:
-      o = ui_file()
+      o = StringIO()
       frame = {}
       
       pysideuic.compileUi( f, o, indent = 0 )
