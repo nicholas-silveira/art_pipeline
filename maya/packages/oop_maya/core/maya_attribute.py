@@ -1,7 +1,7 @@
 import maya.cmds as cmds # @UnresolvedImport
 import maya.mel as mel # @UnresolvedImport
 
-import core
+import oop_maya.core
 
 def get_selected_attr():
 	list_attr = []
@@ -16,6 +16,6 @@ def get_selected_attr():
 				list_attr.append( '{0}.{1}'.format( obj, attr ) )
 
 	else:
-		core.warning( 'You must select attributes in the Channel Box!' )
+		oop_maya.core.warning( 'You must select attributes in the Channel Box!' )
 
 	return list_attr
