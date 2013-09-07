@@ -22,10 +22,10 @@ class Env_Paths():
 	========================================================================
 	'''
 	def core( self ):
-		#pipeline_paths = ['{0}\\core'.format( self.pipeline_path )]
+		pipeline_paths = ['{0}\\core'.format( self.pipeline_path )]
 		
 
-		return ['']
+		return pipeline_paths
 
 	'''
 	========================================================================
