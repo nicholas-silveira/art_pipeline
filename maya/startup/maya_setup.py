@@ -6,8 +6,8 @@ Sets up Maya Tools
 
 import os
 
-import maya.cmds as cmds #@UnresolvedImport
-import maya.mel as mel #@UnresolvedImport
+import maya.cmds as cmds # @UnresolvedImport
+import maya.mel as mel # @UnresolvedImport
 
 import maya_env
 import maya_menu
@@ -61,6 +61,7 @@ class Setup():
 
 		for path in maya_paths:
 			if 'shelves' in path:
+				print path
 				os.chdir( path )
 
 				for item in os.listdir( "." ):

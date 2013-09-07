@@ -1,8 +1,8 @@
-import pysideuic #@UnresolvedImport
-import xml.etree.ElementTree as xml
-from cStringIO import StringIO
+import pysideuic # @UnresolvedImport
+import xml.etree.ElementTree as xml # @UnresolvedImport
+from cStringIO import StringIO # @UnresolvedImport
 
-import PySide.QtGui #@UnresolvedImport
+import PySide.QtGui # @UnresolvedImport # @UnusedImport
 
 def get_ui_class( ui_file ):
    """

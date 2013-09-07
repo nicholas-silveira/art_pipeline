@@ -6,23 +6,20 @@ All Pipeline Environment Paths
 """
 
 import sys
-import os
 
+import core.const
+
+PIPELINE_PATH = core.const.pipeline_path
 
 
 class Env_Paths():
-	def __init__( self ):
-		script_path = os.path.dirname( os.path.abspath( __file__ ) )
-		script_path = os.path.dirname( script_path )
-		self.pipeline_path = os.path.dirname( script_path )
-
 	'''
 	========================================================================
 	---->  Global Pipeline Core Paths  <----
 	========================================================================
 	'''
 	def core( self ):
-		pipeline_paths = ['{0}\\core'.format( self.pipeline_path )]
+		pipeline_paths = ['{0}\\core'.format( PIPELINE_PATH )]
 		
 
 		return pipeline_paths
@@ -33,8 +30,8 @@ class Env_Paths():
 	========================================================================
 	'''
 	def maya_2013( self ):
-		#Import Maya paths
-		maya_paths = ['{0}\\maya\\packages'.format( self.pipeline_path )]
+		# Import Maya paths
+		maya_paths = ['{0}\\maya\\packages'.format( PIPELINE_PATH )]
 
 		return maya_paths
 
@@ -44,8 +41,9 @@ class Env_Paths():
 	========================================================================
 	'''
 	def maya_2014( self ):
-		#Import Maya paths
-		maya_paths = ['{0}\\maya\\packages'.format( self.pipeline_path )]
+		# Import Maya paths
+		maya_paths = ['{0}\\maya\\packages'.format( PIPELINE_PATH ),
+							'{0}\\maya\\shelves'.format( PIPELINE_PATH )]
 
 		return maya_paths
 
@@ -55,8 +53,8 @@ class Env_Paths():
 	========================================================================
 	'''
 	def dcc( self ):
-		#Import Maya paths
-		dcc_paths = ['{0}\\dcc\\packages'.format( self.pipeline_path )]
+		# Import Maya paths
+		dcc_paths = ['{0}\\dcc\\packages'.format( PIPELINE_PATH )]
 
 		return dcc_paths
 	
@@ -66,8 +64,8 @@ class Env_Paths():
 	========================================================================
 	'''
 	def python( self ):
-		#Import Python paths
-		dcc_paths = ['{0}\\python\\packages'.format( self.pipeline_path )]
+		# Import Python paths
+		dcc_paths = ['{0}\\python\\packages'.format( PIPELINE_PATH )]
 
 		return dcc_paths
 

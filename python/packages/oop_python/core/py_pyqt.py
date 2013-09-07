@@ -5,14 +5,12 @@ import PyQt4.QtCore
 import PyQt4.QtGui
 import PyQt4.uic
 
-import json
-
 import logging
 
 
 def supression_warnings():
-	PyQt4.uic.properties.logger.setLevel(logging.WARNING)
-	PyQt4.uic.uiparser.logger.setLevel(logging.WARNING)
+	PyQt4.uic.properties.logger.setLevel( logging.WARNING )
+	PyQt4.uic.uiparser.logger.setLevel( logging.WARNING )
 
 def window_stay_on_top( value, ui_name ):
    flags = ui_name.windowFlags()
@@ -156,28 +154,3 @@ def yes_no_dialog( self, name, message ):
 
    elif reply == PyQt4.QtGui.QMessageBox.No:
       return False
-
-'''
-========================================================================
----->  Procedure writes a json data file  <----
-========================================================================
-'''
-def write_json_file( file_location, data, *args ):
-
-   get_directory( file_location )
-   json_data = json.dumps( data, ensure_ascii = True , indent = 2 )
-
-   data_file = open( file_location, "w" )
-   data_file.write( json_data )
-   data_file.close()
-
-'''
-========================================================================
----->  Procedure parses and returns json data file  <----
-========================================================================
-'''
-def load_json_file( file_location ):
-   data_file = open( file_location )
-   data = json.load( data_file )
-
-   return data
