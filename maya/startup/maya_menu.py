@@ -55,8 +55,13 @@ class Maya_Menu():
 			cmds.deleteUI ( developer_menu, menu = True )
 
 		studio_developer_menu = cmds.menu( developer_menu, parent = gMainWindow, label = developer_menu_name, to = True )
-		cmds.menuItem( parent = studio_developer_menu, label = "Environment Tool", to = True )
+		cmds.menuItem( parent = studio_developer_menu, label = "Environment Tool", to = True, c = self.environment_tool )
 
 	def test( self, *args ):
 		pass
 
+	def environment_tool( self, *args ):
+		import oop_dcc.tools.developer.environment_tool as environment_tool
+		reload( environment_tool )
+		
+		environment_tool.show()

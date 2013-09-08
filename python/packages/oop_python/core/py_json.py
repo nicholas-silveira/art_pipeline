@@ -7,7 +7,7 @@ import json
 ---->  Save Json File  <----
 ========================================================================
 '''
-def save_json_file( file_name, data, *args ):
+def save_json( file_name, data, *args ):
 	json_data = json.dumps( data, ensure_ascii = True , indent = 2 )
 
 	data_file = open( file_name.replace( '\\', '/' ), "w" )
@@ -19,7 +19,7 @@ def save_json_file( file_name, data, *args ):
 ---->  Load Json File  <----
 ========================================================================
 '''
-def load_json_file( file_name ):
+def load_json( file_name ):
 	data_file = open( file_name.replace( '\\', '/' ) )
 	data = json.load( data_file )
 

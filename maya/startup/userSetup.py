@@ -60,8 +60,8 @@ class Pipeline_Setup():
 
 		import startup.maya_env
 
-		maya_version = str( 'maya_{0}'.format( mel.eval( 'getApplicationVersionAsFloat' ) ) )
-		maya_paths = startup.maya_env.Env_Paths().get_paths( maya_version )
+		maya_version = mel.eval( 'getApplicationVersionAsFloat;' )
+		maya_paths = startup.maya_env.get_paths( maya_version )
 
 		for path in maya_paths:
 			if os.path.exists( path ):

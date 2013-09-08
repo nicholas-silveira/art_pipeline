@@ -4,7 +4,7 @@ import maya.OpenMayaUI #@UnresolvedImport
 
 import __init__ as oop_maya
 
-maya_version = oop_maya.maya_version()
+maya_version = oop_maya.get_maya_version()
 
 if maya_version >= 2014:
    import PySide.QtGui as QtGui #@UnresolvedImport
@@ -45,7 +45,10 @@ def wrapinstance( ptr, base = None ):
 
 def get_maya_window():
    maya_window_util = maya.OpenMayaUI.MQtUtil.mainWindow()
-
+   
+   if not maya_window_util:
+      return None
+      
    if maya_version >= 2014:
       maya_window = wrapinstance( long( maya_window_util ), QtGui.QWidget )
       

@@ -9,6 +9,8 @@ import os
 import maya.cmds as cmds # @UnresolvedImport
 import maya.mel as mel # @UnresolvedImport
 
+import oop_maya.core
+
 import maya_env
 import maya_menu
 
@@ -33,8 +35,8 @@ class Setup():
 	========================================================================
 	'''
 	def add_maya_paths( self ):
-		maya_version = str( 'maya_{0}'.format( mel.eval( 'getApplicationVersionAsFloat' ) ) )
-		maya_paths = maya_env.Env_Paths().get_paths( maya_version, print_paths = False )
+		maya_version = oop_maya.core.get_maya_version()
+		maya_paths = maya_env.get_paths( maya_version, print_paths = False )
 
 		get_script_env_string = mel.eval( 'getenv "MAYA_SCRIPT_PATH";' )
 		get_script_env = get_script_env_string.split( ';' )
@@ -54,6 +56,7 @@ class Setup():
 	========================================================================
 	'''
 	def custom_maya( self ):
+		reload( maya_menu )
 		maya_menu.Maya_Menu()
 
 		maya_version = str( 'maya_{0}'.format( mel.eval( 'getApplicationVersionAsFloat' ) ) )

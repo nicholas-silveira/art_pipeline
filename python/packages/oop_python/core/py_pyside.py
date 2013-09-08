@@ -4,7 +4,7 @@ from cStringIO import StringIO # @UnresolvedImport
 
 import PySide.QtGui # @UnresolvedImport # @UnusedImport
 
-def get_ui_class( ui_file ):
+def get_pyside_class( ui_file ):
    """
    Pablo Winant
    """
