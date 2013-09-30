@@ -8,56 +8,13 @@ from maya_search import *
 from maya_fbx import *
 from maya_window import *
 
-try:
+def reload():
    reload( maya_attribute ) #@UndefinedVariable
-   
-except:
-   pass
-
-try:
    reload( maya_callback ) #@UndefinedVariable
-   
-except:
-   pass
-
-try:
    reload( maya_controller ) #@UndefinedVariable
-   
-except:
-   pass
-
-try:
    reload( maya_dag )
-   
-except:
-   pass
-
-try:
    reload( maya_info ) #@UndefinedVariable
-   
-except:
-   pass
-
-try:
    reload( maya_message ) #@UndefinedVariable
-   
-except:
-   pass
-
-try:
    reload( maya_search ) #@UndefinedVariable
-   
-except:
-   pass
-
-try:
    reload( maya_fbx ) #@UndefinedVariable
-   
-except:
-   pass
-
-try:
    reload( maya_window ) #@UndefinedVariable
-   
-except:
-   pass
